@@ -6,30 +6,19 @@
 #
 
 LOCAL_PATH := device/oplus/ossi
-# A/B
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
-    POSTINSTALL_OPTIONAL_system=true
 
-# Boot control HAL
-PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-service
+# Shipping API level
+BOARD_SHIPPING_API_LEVEL := 34
+PRODUCT_SHIPPING_API_LEVEL := 34
+PRODUCT_TARGET_VNDK_VERSION := 34
 
-PRODUCT_PACKAGES += \
-    bootctrl.sun
+# Dynamic partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.sun \
-    libgptutils \
-    libz \
-    libcutils
+# OTA certs
+PRODUCT_EXTRA_RECOVERY_KEYS += \
+	$(LOCAL_PATH)/security/local_OTA \
+	$(LOCAL_PATH)/security/special_OTA
 
-PRODUCT_PACKAGES += \
-    otapreopt_script \
-    cppreopts.sh \
-    update_engine \
-    update_verifier \
-    update_engine_sideload
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)

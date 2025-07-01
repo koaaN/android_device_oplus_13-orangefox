@@ -25,9 +25,29 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+on early-init
+    start vendor.gatekeeper_default
+
+service post-boot-script /system/bin/sh -c /vendor/bin/init.kernel.post_boot-sun_default_6_2.sh
+    user root
+    group root
+    oneshot
+    seclabel u:r:recovery:s0
+
+service prop-override-script /system/bin/sh -c /vendor/bin/propoverride.sh
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+on early-fs
+    write /proc/sys/walt/sched_lib_name "recovery,Updater,updater,update_engine_sideload"
+    write /proc/sys/walt/sched_lib_mask_force 255
+
 on init
     write /sys/class/backlight/panel0-backlight/brightness 200
     setprop sys.usb.configfs 1
+    start vendor.boot-qti
 
 on property:ro.boot.usbcontroller=*
     setprop sys.usb.controller ${ro.boot.usbcontroller}
@@ -38,3 +58,30 @@ on property:ro.boot.usbcontroller=*
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    write /proc/sys/kernel/firmware_config/force_sysfs_fallback 1
+
+on post-fs
+    start prop-override-script
+
+on property:twrp.modules.loaded=true
+    # Mount persist
+    mkdir /mnt/vendor/persist
+    mount ext4 /dev/block/bootdevice/by-name/persist /mnt/vendor/persist ro
+    # Mount firmware
+    mkdir /firmware
+    mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
+    # Load ADSP firmware for PMIC
+    wait /sys/kernel/boot_adsp/ssr
+    write /sys/kernel/boot_adsp/boot 1
+    write /sys/kernel/boot_adsp/ssr 1
+    wait /sys/class/power_supply/battery
+    start vendor.health-default
+    start vendor.oplus.vibrator
+    umount /firmware
+
+on property:hwservicemanager.ready=true
+    setprop sys.boot_completed 1
+
+on property:vendor.sys.listeners.registered=true
+    start vendor.ssgtzd
+    start vendor.se_omapi

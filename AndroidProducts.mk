@@ -6,7 +6,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/tqrp_ossi.mk
+    $(LOCAL_DIR)/twrp_ossi.mk
 
 COMMON_LUNCH_CHOICES := \
     twrp_ossi-user \
