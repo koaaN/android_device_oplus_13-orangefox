@@ -9,4 +9,8 @@
         <version>3</version>
         <fqname>IRemotelyProvisionedComponent/strongbox</fqname>
     </hal>
+    <hal format="aidl">
+        <name>android.hardware.security.sharedsecret</name>
+        <fqname>ISharedSecret/strongbox</fqname>
+    </hal>
 </manifest>
