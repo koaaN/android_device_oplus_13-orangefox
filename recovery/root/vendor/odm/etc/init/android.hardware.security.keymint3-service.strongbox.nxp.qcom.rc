@@ -4,4 +4,5 @@ service vendor.keymint-strongbox /odm/bin/hw/android.hardware.security.keymint-s
     user root
     group root nfc drmrpc
     capabilities WAKE_ALARM
+    interface aidl android.hardware.security.sharedsecret.ISharedSecret/strongbox
     seclabel u:r:recovery:s0
