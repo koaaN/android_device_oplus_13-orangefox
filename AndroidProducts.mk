@@ -6,9 +6,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_ossi.mk
+    $(LOCAL_DIR)/twrp_PJZ110.mk
 
 COMMON_LUNCH_CHOICES := \
-    twrp_ossi-user \
-    twrp_ossi-userdebug \
-    twrp_ossi-eng
+    twrp_PJZ110-user \
+    twrp_PJZ110-userdebug \
+    twrp_PJZ110-eng

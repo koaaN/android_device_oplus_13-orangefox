@@ -1,4 +1,4 @@
-# Android device tree for oplus ossi (ossi)
+# Android device tree for oplus 13 (PJZ110)
 
 ```
 #
