@@ -22,3 +22,7 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
+
+# Extras
+PRODUCT_PACKAGES += dmsetup
+PRODUCT_PACKAGES += libdevmapper libpopt
