@@ -1,1 +1,2 @@
 OF_MAINTAINER="koaaN & Daniel Springer"
+FOX_VIRTUAL_AB_DEVICE=1
