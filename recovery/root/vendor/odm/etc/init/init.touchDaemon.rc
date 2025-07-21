@@ -31,5 +31,5 @@ on late-init
     exec -- /sbin/sh -c "cp -a /data/vendor/touch/. /tmp/vendor/touch1/"
     exec -- /sbin/sh -c "cp -a /data/vendor/touchconfig/. /tmp/vendor/touch1config/"
     start touchDaemon
-	exec -- /sbin/sh -c "echo 'touchDaemon.rc loaded' > /tmp/touchdaemon_debug.log"
+    exec -- /sbin/sh -c "echo 'touchDaemon.rc loaded' > /tmp/touchdaemon_debug.log"
 	
