@@ -1,4 +1,6 @@
-service touchDaemon  /odm/bin/touchDaemon
+exec -- /sbin/sh -c "echo 'touchDaemon.rc loaded' > /tmp/touchdaemon_debug.log"
+
+service touchDaemon  /vendor/odm/bin/touchDaemon
     class late_start
     socket hidl2touchdaemon_client dgram 0660 root inet
     socket hidl2touchdaemon_server dgram 0660 root inet
@@ -7,11 +9,11 @@ service touchDaemon  /odm/bin/touchDaemon
     seclabel u:r:recovery:s0
 
 on boot
-    chown root root /odm/bin/touchDaemon
+    chown root root /vendor/odm/bin/touchDaemon
     chown system system /dev/tp_misc
     chown system system /dev/tp_misc1
     chown system system /dev/tcm_hbp0
-    chmod 0777 odm/bin/touchDaemon
+    chmod 0777 /vendor/odm/bin/touchDaemon
     chmod 0777 dev/tp_misc
     chmod 0777 dev/tp_misc1
     chmod 0777 dev/tcm_hbp0
@@ -19,9 +21,15 @@ on boot
     mkdir /data/vendor/touch/log 0771 system system
     chmod 0777 /data/vendor/touch/frameLog.log
     chmod 0777 /data/vendor/touch/touchHealthInfo.log
-
+	
 on property:vendor.oplus.touchDaemon.enable=0
     stop touchDaemon
 
 on late-init
+    mkdir /tmp/vendor/touch1 0771 system system
+    mkdir /tmp/vendor/touch1config 0771 system system
+    exec -- /sbin/sh -c "cp -a /data/vendor/touch/. /tmp/vendor/touch1/"
+    exec -- /sbin/sh -c "cp -a /data/vendor/touchconfig/. /tmp/vendor/touch1config/"
     start touchDaemon
+	exec -- /sbin/sh -c "echo 'touchDaemon.rc loaded' > /tmp/touchdaemon_debug.log"
+	
