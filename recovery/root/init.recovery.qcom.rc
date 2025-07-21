@@ -48,6 +48,7 @@ on init
     write /sys/class/backlight/panel0-backlight/brightness 200
     setprop sys.usb.configfs 1
     start vendor.boot-qti
+    start my_mvTouch_script
 
 on property:ro.boot.usbcontroller=*
     setprop sys.usb.controller ${ro.boot.usbcontroller}
@@ -86,3 +87,11 @@ on property:vendor.sys.listeners.registered=true
     start vendor.ssgtzd
     start vendor.se_omapi
     start vendor.keymint-strongbox
+
+
+service my_mvTouch_script /system/bin/sh /vendor/bin/mvTouch.sh
+    user root
+    group root
+    oneshot
+    seclabel u:r:recovery:s0
+
