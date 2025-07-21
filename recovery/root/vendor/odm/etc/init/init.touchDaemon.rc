@@ -19,6 +19,8 @@ on boot
     chmod 0777 dev/tcm_hbp0
     mkdir /data/vendor/touch 0771 system system
     mkdir /data/vendor/touch/log 0771 system system
+    mkdir /tmp/vendor/touch1 0771 system system
+    mkdir /tmp/vendor/touch1config 0771 system system
     chmod 0777 /data/vendor/touch/frameLog.log
     chmod 0777 /data/vendor/touch/touchHealthInfo.log
 	
