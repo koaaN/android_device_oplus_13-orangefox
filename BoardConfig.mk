@@ -160,8 +160,6 @@ TW_DEVICE_VERSION := Oplus-13-A15-by-CoolAPK@BrokeStar
 
 # Vibrator
 TW_SUPPORT_INPUT_AIDL_HAPTICS := true
-TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"
-TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF := true
 
 # Other TWRP Configurations
 TARGET_RECOVERY_QCOM_RTC_FIX := true
