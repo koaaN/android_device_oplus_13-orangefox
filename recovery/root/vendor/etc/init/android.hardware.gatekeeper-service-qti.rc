@@ -1,6 +1,3 @@
-on init
-    start vendor.gatekeeper_default
-
 service vendor.gatekeeper_default /vendor/bin/hw/android.hardware.gatekeeper-service-qti
     class early_hal
     user root
