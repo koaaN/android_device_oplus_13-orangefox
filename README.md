@@ -1,6 +1,6 @@
 # OnePlus 13 PJZ110 Android device tree
 
-## Features
+## Working
 
 - [X] Display
 - [X] Touch (Even in FastbootD)
