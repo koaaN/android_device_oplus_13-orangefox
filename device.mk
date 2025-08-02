@@ -15,6 +15,11 @@ PRODUCT_TARGET_VNDK_VERSION := 34
 # Dynamic partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+PRODUCT_PACKAGES += \
+    lpflash \
+    lpmake \
+    lpunpack
+
 # OTA certs
 PRODUCT_EXTRA_RECOVERY_KEYS += \
 	$(LOCAL_PATH)/security/local_OTA \
