@@ -11,7 +11,8 @@
 - [X] ADB/FastbootD
 - [X] Factory Reset
 - [X] Vibrator
+- [X] Display & Vibration Settings
 
 ## Not working
 - [ ] Data restore (encrypted)?
-- [ ] Display & Vibration Settings
+
