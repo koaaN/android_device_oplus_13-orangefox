@@ -5,7 +5,7 @@
 /vendor_dlkm    ext4    vendor_dlkm                                                         flags=display=Vendor_DLKM
 
 # Userdata/Metadata partitions
-/metadata       emmc    /dev/block/by-name/metadata                                         flags=display="Metadata";backup=1;flashimg=1
+/metadata       f2fs    /dev/block/by-name/metadata                                         flags=display="Metadata";backup=1;flashimg=1
 
 # Boot partitions
 /boot           emmc    /dev/block/bootdevice/by-name/boot                                  flags=slotselect
