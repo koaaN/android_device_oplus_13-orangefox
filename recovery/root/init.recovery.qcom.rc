@@ -79,10 +79,3 @@ on property:vendor.sys.listeners.registered=true
     start vendor.se_omapi
     start vendor.keymint-strongbox
 
-
-service my_mvTouch_script /system/bin/sh /vendor/bin/mvTouch.sh
-    user root
-    group root
-    oneshot
-    seclabel u:r:recovery:s0
-
