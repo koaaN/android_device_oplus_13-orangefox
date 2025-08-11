@@ -63,6 +63,7 @@ AB_OTA_PARTITIONS := \
     system_dlkm \
     vbmeta \
     vbmeta_system \
+	vbmeta_vendor \
     vendor \
     vendor_dlkm
 
