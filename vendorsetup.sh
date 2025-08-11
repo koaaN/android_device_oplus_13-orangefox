@@ -78,10 +78,5 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_VARIANT="OnePlus_13"
 	export OF_MAINTAINER="Jonas Salo & Daniel Springer"
 	export OF_SCREEN_H=2376
-	export OF_STATUS_H=120
-	export OF_STATUS_INDENT_LEFT=20
-	export OF_STATUS_INDENT_RIGHT=20
-	export OF_HIDE_NOTCH=1
-	export OF_ALLOW_DISABLE_NAVBAR=0
 fi
 #
