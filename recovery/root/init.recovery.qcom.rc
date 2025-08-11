@@ -57,15 +57,11 @@ on fs
     write /proc/sys/kernel/firmware_config/force_sysfs_fallback 1
 
 on property:twrp.modules.loaded=true
-    # Mount persist
-    mkdir /mnt/vendor/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /mnt/vendor/persist ro
     # Mount firmware
     mkdir /firmware
     mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
     # Load ADSP firmware for PMIC
     wait /sys/kernel/boot_adsp/ssr
-    write /sys/kernel/boot_adsp/boot 1
     write /sys/kernel/boot_adsp/ssr 1
     wait /sys/class/power_supply/battery
     start vendor.health-default
