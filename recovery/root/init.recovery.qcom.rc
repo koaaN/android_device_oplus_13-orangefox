@@ -43,7 +43,6 @@ on init
     setprop sys.usb.configfs 1
     start vendor.boot-qti
     setprop prepdecrypt.setpatch true
-    start my_mvTouch_script
 
 on property:ro.boot.usbcontroller=*
     setprop sys.usb.controller ${ro.boot.usbcontroller}
@@ -57,15 +56,11 @@ on fs
     write /proc/sys/kernel/firmware_config/force_sysfs_fallback 1
 
 on property:twrp.modules.loaded=true
-    # Mount persist
-    mkdir /mnt/vendor/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /mnt/vendor/persist ro
     # Mount firmware
     mkdir /firmware
     mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
     # Load ADSP firmware for PMIC
     wait /sys/kernel/boot_adsp/ssr
-    write /sys/kernel/boot_adsp/boot 1
     write /sys/kernel/boot_adsp/ssr 1
     wait /sys/class/power_supply/battery
     start vendor.health-default
@@ -82,11 +77,4 @@ on property:vendor.sys.listeners.registered=true
     start vendor.ssgtzd
     start vendor.se_omapi
     start vendor.keymint-strongbox
-
-
-service my_mvTouch_script /system/bin/sh /vendor/bin/mvTouch.sh
-    user root
-    group root
-    oneshot
-    seclabel u:r:recovery:s0
 
