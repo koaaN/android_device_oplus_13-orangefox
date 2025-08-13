@@ -78,5 +78,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_VARIANT="OnePlus_13"
 	export OF_MAINTAINER="Jonas Salo & Daniel Springer"
 	export OF_SCREEN_H=2376
+ 	export TARGET_DEVICE_ALT="OP5D55L1, OP5D0DL1"
 fi
 #
