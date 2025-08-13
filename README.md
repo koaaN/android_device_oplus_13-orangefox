@@ -6,7 +6,7 @@
 - [X] Touch (Even in FastbootD)
 - [X] Decryption
 - [X] Flashing
-- [/] Backup & Restore (Data restore semi broken)
+- [X] Backup & Restore (Data restore semi broken)
 - [X] MTP/OTG Storage
 - [X] ADB/FastbootD
 - [X] Factory Reset
