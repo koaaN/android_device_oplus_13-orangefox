@@ -425,6 +425,39 @@
 		  </action>
 		</page>
 
+		<page name="mod_sukisu">
+		  <action>
+			<action function="queueclear"/>
+			<action function="set">fox_m_author=SukiSU Team</action>
+			<action function="set">fox_m_name={@module_install} SukiSU Ultra 3.1.8</action>
+			<action function="set">tw_file=SukiSU.zip</action>
+			<action function="set">tw_filename=/FFiles/SukiSU/SukiSU.zip</action>
+			<action function="set">tw_filecheck=%tw_filename%</action>
+			<action function="set">tw_zip_location=/FFiles/SukiSU</action>
+			<action function="set">fox_install_built_in_zip=1</action>
+			<action function="queuezip"/>
+			<action function="set">tw_notexistpage=fox_modules_confirm</action>
+			<action function="set">tw_existpage=fox_modules_confirm</action>
+			<action function="page">filecheck</action>
+		  </action>
+		</page>
+
+		<page name="mod_unssu">
+		  <action>
+			<action function="queueclear"/>
+			<action function="set">fox_m_author=SukiSU Team</action>
+			<action function="set">fox_m_name={@module_uninstall} SukiSU Ultra</action>
+			<action function="set">tw_file=KernelSU_uninstaller.zip</action>
+			<action function="set">tw_filename=/FFiles/KernelSU_uninstaller/KernelSU_uninstaller.zip</action>
+			<action function="set">tw_filecheck=%tw_filename%</action>
+			<action function="set">tw_zip_location=/FFiles/KernelSU_uninstaller</action>
+			<action function="set">fox_install_built_in_zip=1</action>
+			<action function="queuezip"/>
+			<action function="set">tw_notexistpage=fox_modules_confirm</action>
+			<action function="set">tw_existpage=fox_modules_confirm</action>
+			<action function="page">filecheck</action>
+		  </action>
+		</page>
 
 		<page name="mod_reset">
 			<action>
@@ -508,11 +541,29 @@
 
 			<text style="caption">
 				<placement x="%col1_x_caption%" y="%row5_1_y%"/>
+				<text>SukiSU Ultra</text>
+			</text>
+
+			<listbox style="btn_list">
+				<placement x="0" y="%row5_2_y%" w="%screen_w%" h="%bl_h2%"/>
+				<listitem name="{@module_install} SukiSU Ultra %ssu_ver%">
+					<icon res="bs_btn_archive"/>
+					<action function="page">mod_sukisu</action>
+				</listitem>
+				<placement x="0" y="%row5_3_y%" w="%screen_w%" h="%bl_h2%"/>
+				<listitem name="{@module_uninstall} SukiSU Ultra">
+					<icon res="bs_btn_archive"/>
+					<action function="page">mod_unssu</action>
+				</listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x_caption%" y="%row7_1_y%"/>
 				<text>{@cust_oth}</text>
 			</text>
 
 			<listbox style="btn_list">
-				<placement x="0" y="%row5_2_y%" w="%screen_w%" h="%bl_h6%"/>
+				<placement x="0" y="%row7_2_y%" w="%screen_w%" h="%bl_h6%"/>
 				<listitem name="{@module_of_set}">
 					<condition var1="fileexists" var2="/FFiles/OF_backup_settings/OF_backup_settings.zip"/>
 					<icon res="bs_btn_archive"/>
