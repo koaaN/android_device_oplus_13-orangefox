@@ -6,7 +6,7 @@
 - [X] Touch (Even in FastbootD)
 - [X] Decryption
 - [X] Flashing
-- [X] Backup & Restore (Data restore semi broken)
+- [X] Backup & Restore
 - [X] MTP/OTG Storage
 - [X] ADB/FastbootD
 - [X] Factory Reset
@@ -14,7 +14,7 @@
 - [X] Display & Vibration Settings
 
 ## Not working
-- [ ] Data restore (encrypted)?
+- [ ] ????????
 
 # How To Build
 
