@@ -66,5 +66,5 @@
 /persist        ext4    /dev/block/bootdevice/by-name/persist                               flags=display="Persist";fsflags=ro
 /persist_image  emmc    /dev/block/bootdevice/by-name/persist                               flags=display="Persist";backup=0
 
-## Removable storage
+# Removable storage
 /usbstorage     vfat    /dev/block/sdg1                                 /dev/block/sdg      flags=fsflags=utf8;display="USB Storage";storage;wipeingui;removable
