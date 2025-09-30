@@ -395,7 +395,7 @@
 		  <action>
 			<action function="queueclear"/>
 			<action function="set">fox_m_author=KernelSU Next Team</action>
-			<action function="set">fox_m_name={@module_install} KernelSU Next 1.0.9</action>
+			<action function="set">fox_m_name={@module_install} KernelSU Next 1.1.1</action>
 			<action function="set">tw_file=KernelSUN.zip</action>
 			<action function="set">tw_filename=/FFiles/KernelSUN/KernelSUN.zip</action>
 			<action function="set">tw_filecheck=%tw_filename%</action>
