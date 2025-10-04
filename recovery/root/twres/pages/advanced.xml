@@ -500,57 +500,57 @@
 			</action>
 
 			<!-- fox_modules_confirm located in install.xml -->
-
 			<text style="caption">
 				<!--condition var1="no_magisk" op="!=" var2="1"/-->
 				<placement x="%col1_x_caption%" y="%row1_1_y%"/>
-				<text>KernelSU</text>
+				<text>Magisk</text>
 			</text>
 
 			<listbox style="btn_list">
 				<!--condition var1="no_magisk" op="!=" var2="1"/-->
 				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%bl_h2%"/>
-				<listitem name="{@module_install} KernelSU %ksu_ver%">
+				<listitem name="{@module_install} Magisk %magisk_ver%">
 					<icon res="bs_btn_archive"/>
-					<action function="page">mod_kernelsu</action>
+					<action function="page">mod_magisk</action>
 				</listitem>
-				<placement x="0" y="%row1_3_y%" w="%screen_w%" h="%bl_h2%"/>
-				<listitem name="{@module_uninstall} KernelSU">
+				<listitem name="{@module_uninstall} Magisk">
 					<icon res="bs_btn_archive"/>
-					<action function="page">mod_unksu</action>
-				</listitem>
-			</listbox>
-
-				<text style="caption">
-				<placement x="%col1_x_caption%" y="%row3_1_y%"/>
-				<text>KernelSU Next</text>
-			</text>
-
-			<listbox style="btn_list">
-				<placement x="0" y="%row3_2_y%" w="%screen_w%" h="%bl_h2%"/>
-				<listitem name="{@module_install} KernelSU Next %ksun_ver%">
-					<icon res="bs_btn_archive"/>
-					<action function="page">mod_kernelsu_next</action>
-				</listitem>
-				<placement x="0" y="%row3_3_y%" w="%screen_w%" h="%bl_h2%"/>
-				<listitem name="{@module_uninstall} KernelSU Next">
-					<icon res="bs_btn_archive"/>
-					<action function="page">mod_unksu_next</action>
+					<action function="page">mod_unmagisk</action>
 				</listitem>
 			</listbox>
 
 			<text style="caption">
-				<placement x="%col1_x_caption%" y="%row5_1_y%"/>
-				<text>SukiSU Ultra</text>
+				<placement x="%col1_x_caption%" y="%row3_1a_y%"/>
+				<text>KernelSU/KernelSU Next/SukiSU</text>
 			</text>
 
 			<listbox style="btn_list">
-				<placement x="0" y="%row5_2_y%" w="%screen_w%" h="%bl_h2%"/>
+				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%bl_h4%"/>
+				<listitem name="{@module_install} KernelSU %ksu_ver%">
+					<icon res="bs_btn_archive"/>
+					<action function="page">mod_kernelsu</action>
+				</listitem>
+
+				<listitem name="{@module_uninstall} KernelSU">
+					<icon res="bs_btn_archive"/>
+					<action function="page">mod_unksu</action>
+				</listitem>
+
+				<listitem name="{@module_install} KernelSU Next %ksun_ver%">
+					<icon res="bs_btn_archive"/>
+					<action function="page">mod_kernelsu_next</action>
+				</listitem>
+
+				<listitem name="{@module_uninstall} KernelSU Next">
+					<icon res="bs_btn_archive"/>
+					<action function="page">mod_unksu_next</action>
+				</listitem>
+
 				<listitem name="{@module_install} SukiSU Ultra %ssu_ver%">
 					<icon res="bs_btn_archive"/>
 					<action function="page">mod_sukisu</action>
 				</listitem>
-				<placement x="0" y="%row5_3_y%" w="%screen_w%" h="%bl_h2%"/>
+
 				<listitem name="{@module_uninstall} SukiSU Ultra">
 					<icon res="bs_btn_archive"/>
 					<action function="page">mod_unssu</action>
@@ -558,12 +558,12 @@
 			</listbox>
 
 			<text style="caption">
-				<placement x="%col1_x_caption%" y="%row7_1_y%"/>
+				<placement x="%col1_x_caption%" y="%row7_1a_y%"/>
 				<text>{@cust_oth}</text>
 			</text>
 
 			<listbox style="btn_list">
-				<placement x="0" y="%row7_2_y%" w="%screen_w%" h="%bl_h6%"/>
+				<placement x="0" y="%row7_2a_y%" w="%screen_w%" h="%bl_h4%"/>
 				<listitem name="{@module_of_set}">
 					<condition var1="fileexists" var2="/FFiles/OF_backup_settings/OF_backup_settings.zip"/>
 					<icon res="bs_btn_archive"/>
