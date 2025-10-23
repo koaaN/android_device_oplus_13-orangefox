@@ -17,7 +17,7 @@
 #
 # 	Please maintain this if you use this script or any part of it
 #
-FDEVICE="PJZ110"
+FDEVICE="dodge"
 
 fox_get_target_device() {
 local chkdev=$(echo "$BASH_SOURCE" | grep -w $FDEVICE)
@@ -71,7 +71,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_OPTIONS_LIST_NUM=6
 
 	# For OnePlus 13
-	export FOX_VARIANT="OnePlus_13"
 	export OF_MAINTAINER="Jonas Salo & Daniel Springer"
 	export OF_SCREEN_H=2376
  	export TARGET_DEVICE_ALT="OP5D55L1, OP5D0DL1"
