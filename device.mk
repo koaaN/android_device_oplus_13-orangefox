@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := device/oplus/PJZ110
+LOCAL_PATH := device/oplus/dodge
 
 # Shipping API level
 BOARD_SHIPPING_API_LEVEL := 34
