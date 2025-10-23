@@ -30,7 +30,7 @@ $(call inherit-product, device/oplus/dodge/device.mk)
 PRODUCT_DEVICE := dodge
 PRODUCT_NAME := twrp_dodge
 PRODUCT_BRAND := oplus
-PRODUCT_MODEL := dodge
+PRODUCT_MODEL := OnePlus 13
 PRODUCT_MANUFACTURER := oplus
 
 PRODUCT_GMS_CLIENTID_BASE := android-oplus
