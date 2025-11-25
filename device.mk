@@ -4,8 +4,11 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
+# Copyright (C) 2024 The OrangeFox Recovery Project
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
 
-LOCAL_PATH := device/oplus/PJZ110
+LOCAL_PATH := device/oneplus/dodge
 
 # Shipping API level
 BOARD_SHIPPING_API_LEVEL := 34
@@ -27,3 +30,7 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
+
+# some OrangeFox-specific settings
+$(call inherit-product, $(LOCAL_PATH)/fox_dodge.mk)
+#

@@ -1,4 +1,4 @@
-# OnePlus 13 PJZ110 Android device tree
+# OnePlus 13 dodge Android device tree
 
 ## Working
 
@@ -29,14 +29,14 @@ cd sync
 ### Clone Device-tree
 ```
 cd ~/fox_14.1/device
-mkdir -p oplus
-cd oplus
-git clone https://github.com/koaaN/android_device_oplus_13-orangefox.git PJZ110
+mkdir -p oneplus
+cd oneplus
+git clone https://gitlab.com/OrangeFox/device/dodge.git dodge
 ```
 ### BUILD!
 ```
 cd ~/fox_14.1
 source build/envsetup.sh
-lunch twrp_PJZ110-ap2a-eng
+lunch twrp_dodge-ap2a-eng
 mka adbd recoveryimage
 ```

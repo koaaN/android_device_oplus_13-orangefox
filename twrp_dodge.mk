@@ -4,6 +4,9 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
+# Copyright (C) 2024 The OrangeFox Recovery Project
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
 
 # Configure base.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
@@ -24,14 +27,14 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 
-# Inherit from PJZ110 device
-$(call inherit-product, device/oplus/PJZ110/device.mk)
+# Inherit from dodge device
+$(call inherit-product, device/oneplus/dodge/device.mk)
 
-PRODUCT_DEVICE := PJZ110
-PRODUCT_NAME := twrp_PJZ110
-PRODUCT_BRAND := oplus
-PRODUCT_MODEL := PJZ110
-PRODUCT_MANUFACTURER := oplus
+PRODUCT_DEVICE := dodge
+PRODUCT_NAME := twrp_dodge
+PRODUCT_BRAND := oneplus
+PRODUCT_MODEL := OnePlus 13
+PRODUCT_MANUFACTURER := oneplus
 
 PRODUCT_GMS_CLIENTID_BASE := android-oplus
 

@@ -4,11 +4,14 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
+# Copyright (C) 2024 The OrangeFox Recovery Project
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_PJZ110.mk
+    $(LOCAL_DIR)/twrp_dodge.mk
 
 COMMON_LUNCH_CHOICES := \
-    twrp_PJZ110-user \
-    twrp_PJZ110-userdebug \
-    twrp_PJZ110-eng
+    twrp_dodge-user \
+    twrp_dodge-userdebug \
+    twrp_dodge-eng

@@ -4,8 +4,11 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
+# Copyright (C) 2024-2025 The OrangeFox Recovery Project
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
 
-DEVICE_PATH := device/oplus/PJZ110
+DEVICE_PATH := device/oneplus/dodge
 
 
 # For building with minimal manifest
@@ -118,7 +121,6 @@ TW_USE_FSCRYPT_POLICY := 2
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TW_INCLUDE_FASTBOOTD := true
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 TW_SKIP_ADDITIONAL_FSTAB := true
 
 # Tool
@@ -178,3 +180,7 @@ TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
 TW_USE_TOOLBOX := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
+
+# se_omapi
+TW_INCLUDE_OMAPI := true
+#
