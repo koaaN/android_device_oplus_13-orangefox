@@ -20,22 +20,22 @@
 
 ### Clone & Sync Source
 ```
-mkdir -p ~/OrangeFox_14
-cd ~/OrangeFox_14
+mkdir -p ~/android/OrangeFox_14
+cd ~/android/OrangeFox_14
 git clone https://gitlab.com/OrangeFox/sync.git
 cd sync
-./orangefox_sync.sh --branch 14.1 --path ~/fox_14.1
+./orangefox_sync.sh --branch 14.1 --path ~/android/fox_14.1
 ```
 ### Clone Device-tree
 ```
-cd ~/fox_14.1/device
+cd ~/android/fox_14.1/device
 mkdir -p oneplus
 cd oneplus
 git clone https://github.com/koaaN/android_device_oplus_13-orangefox.git dodge
 ```
 ### BUILD!
 ```
-cd ~/fox_14.1
+cd ~/android/fox_14.1
 source build/envsetup.sh
 lunch twrp_dodge-ap2a-eng
 mka adbd recoveryimage
