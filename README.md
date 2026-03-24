@@ -31,7 +31,7 @@ cd sync
 cd ~/android/fox_14.1/device
 mkdir -p oneplus
 cd oneplus
-git clone https://github.com/koaaN/android_device_oplus_13-orangefox.git dodge
+git clone https://github.com/koaaN/android_device_oneplus_dodge-orangefox.git dodge
 ```
 ### BUILD!
 ```
