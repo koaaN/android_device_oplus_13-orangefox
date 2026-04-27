@@ -1,0 +1,16 @@
+on property:post.decrypt.modules=true
+    symlink  /vendor/odm/etc/wifi/WCNSS_qcom_cfg.ini /data/vendor/firmware/update/wlan/WCNSS_qcom_cfg.ini
+    chmod 222 /sys/bus/platform/drivers/cnss2/b0000000.qcom,cnss-peach/fs_ready
+    write /sys/bus/platform/drivers/cnss2/b0000000.qcom,cnss-peach/fs_ready 1
+    wait /sys/class/net/wlan0 10
+    write /dev/kmsg "Interface wlan0 found"
+    setprop wifi.driver.ready true
+
+on property:wifi.driver.ready=true
+    mkdir /tmp/recovery 0777 root root
+    mkdir /tmp/recovery/sockets 0777 root root
+    start wpa_supplicant
+
+service wpa_supplicant /system/bin/wpa_supplicant -Dnl80211 -iwlan0 -dd -O/tmp/recovery/sockets -c/vendor/etc/wifi/wpa_supplicant.conf
+    disabled
+    seclabel u:r:recovery:s0

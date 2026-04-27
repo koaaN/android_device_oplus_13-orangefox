@@ -1,0 +1,1050 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+# Copyright (c) 2020, The Linux Foundation. All rights reserved.
+
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of The Linux Foundation nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+# Changes from Qualcomm Innovation Center are provided under the following license:
+# Copyright (c) 2021-2022 Qualcomm Innovation Center, Inc. All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+-->
+
+<WCN_VenTool>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_TEST = 1 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_ROAMING = 9 -->
+	<VendorCmd name="ROAMING" ID="9">
+		<Attribute name="ROAMING_POLICY" ID="5" TYPE="U32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_AVOID_FREQUENCY = 10 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DFS_CAPABILITY = 11 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_NAN = 12 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_STATS_EXT = 13 -->
+	<VendorCmd name="STATS_EXT" ID="13">
+		<Attribute name="DATA" ID="1" TYPE="BLOB"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_LL_STATS_SET = 14 -->
+	<VendorCmd name="SET_LL_STATS" ID="14">
+		<Attribute name="SET_CONFIG_MPDU_SIZE_THRESHOLD" ID="1" TYPE="U32"/>
+		<Attribute name="SET_CONFIG_AGGRESSIVE_STATS_GATHERING" ID="2" TYPE="U32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_LL_STATS_GET = 15 -->
+	<VendorCmd name="LLSTATS_GET" ID="15">
+		<Attribute name="REQ_ID" ID="1" TYPE="u32"/>
+		<Attribute name="REQ_MASK" ID="2" TYPE="u32"/>
+		<Attribute name="REQ_INFO" ID="3" TYPE="string"/>
+		<VendorRsp name="LLSTATS_GET" ID="15" ATTR_MAX="76">
+			<Attribute name="LLSTATS_TYPE" ID="76" TYPE="u32"/>
+			<Attribute name="MORE_DATA" ID="71" TYPE="u32"/>
+			<Switch name="LLSTATS_TYPE">
+			<Case value="1" name="LLSTATS_TYPE_RADIO">
+				<Attribute name="NUM_CHANNELS" ID="59" TYPE="u32"/>
+				<Attribute name="RADIO_ID" ID="49" TYPE="u32"/>
+				<Attribute name="RADIO_ON_TIME" ID="50" TYPE="u32"/>
+				<Attribute name="RADIO_TX_TIME" ID="51" TYPE="u32"/>
+				<Attribute name="RADIO_RX_TIME" ID="52" TYPE="u32"/>
+				<Attribute name="RADIO_ON_TIME_SCAN" ID="53" TYPE="u32"/>
+				<Attribute name="RADIO_ON_TIME_NBD" ID="54" TYPE="u32"/>
+				<Attribute name="RADIO_ON_TIME_GSCAN" ID="55" TYPE="u32"/>
+				<Attribute name="RADIO_ON_TIME_ROAM_SCAN" ID="56" TYPE="u32"/>
+				<Attribute name="RADIO_ON_TIME_PNO_SCAN" ID="57" TYPE="u32"/>
+				<Attribute name="RADIO_ON_TIME_HS20" ID="58" TYPE="u32"/>
+				<Attribute name="NUM_RADIOS" ID="66" TYPE="u32"/>
+				<Attribute name="CH_INFO" ID="67" TYPE="NESTED" ATTR_MAX="76">
+					<Attribute name="CHANNEL_INFO_WIDTH" ID="60" TYPE="u32"/>
+					<Attribute name="CHANNEL_INFO_CENTER_FREQ" ID="61" TYPE="u32"/>
+					<Attribute name="CHANNEL_INFO_CENTER_FREQ0" ID="62" TYPE="u32"/>
+					<Attribute name="CHANNEL_INFO_CENTER_FREQ1" ID="63" TYPE="u32"/>
+					<Attribute name="CHANNEL_ON_TIME" ID="64" TYPE="u32"/>
+					<Attribute name="CHANNEL_CCA_BUSY_TIME" ID="65" TYPE="u32"/>
+				</Attribute>
+			</Case>
+			<Case value="2" name="LLSTATS_TYPE_IFACE">
+				<Attribute name="MODE" ID="9" TYPE="u32"/>
+				<Attribute name="MAC_ADDR" ID="10" TYPE="mac_addr"/>
+				<Attribute name="STATE" ID="11" TYPE="u32"/>
+				<Attribute name="ROAMING" ID="12" TYPE="u32"/>
+				<Attribute name="CAPABILITIES" ID="13" TYPE="u32"/>
+				<Attribute name="SSID" ID="14" TYPE="string" LENGTH="33"/>
+				<Attribute name="BSSID" ID="15" TYPE="mac_addr"/>
+				<Attribute name="AP_COUNTRY_STR" ID="16" TYPE="string" LENGTH="3"/>
+				<Attribute name="COUNTRY_STR" ID="17" TYPE="string" LENGTH="2"/>
+				<Attribute name="BEACON_RX" ID="2" TYPE="u32"/>
+				<Attribute name="MGMT_RX" ID="3" TYPE="u32"/>
+				<Attribute name="MGMT_ACTION_RX" ID="4" TYPE="u32"/>
+				<Attribute name="MGMT_ACTION_TX" ID="5" TYPE="u32"/>
+				<Attribute name="RSSI_MGMT" ID="6" TYPE="u32"/>
+				<Attribute name="RSSI_DATA" ID="7" TYPE="u32"/>
+				<Attribute name="RSSI_ACK" ID="8" TYPE="u32"/>
+				<Attribute name="AVERAGE_TSF_OFFSET" ID="72" TYPE="u32"/>
+				<Attribute name="LEAKY_AP_DETECTED" ID="73" TYPE="u32"/>
+				<Attribute name="LEAKY_AP_AVG_NUM_FRAMES_LEAKED" ID="74" TYPE="u32"/>
+				<Attribute name="LEAKY_AP_GUARD_TIME" ID="75" TYPE="u32"/>
+				<Attribute name="WMM_INFO" ID="70" TYPE="NESTED" ATTR_MAX="76">
+					<Attribute name="AC" ID="18" TYPE="u32"/>
+					<Attribute name="AC_TX_MPDU" ID="19" TYPE="u32"/>
+					<Attribute name="AC_RX_MPDU" ID="20" TYPE="u32"/>
+					<Attribute name="AC_TX_MCAST" ID="21" TYPE="u32"/>
+					<Attribute name="AC_RX_MCAST" ID="22" TYPE="u32"/>
+					<Attribute name="AC_RX_AMPDU" ID="23" TYPE="u32"/>
+					<Attribute name="AC_TX_AMPDU" ID="24" TYPE="u32"/>
+					<Attribute name="AC_MPDU_LOST" ID="25" TYPE="u32"/>
+					<Attribute name="AC_RETRIES" ID="26" TYPE="u32"/>
+					<Attribute name="AC_RETRIES_SHORT" ID="27" TYPE="u32"/>
+					<Attribute name="AC_RETRIES_LONG" ID="28" TYPE="u32"/>
+					<Attribute name="AC_CONTENTION_TIME_MIN" ID="29" TYPE="u32"/>
+					<Attribute name="AC_CONTENTION_TIME_MAX" ID="30" TYPE="u32"/>
+					<Attribute name="AC_CONTENTION_TIME_AVG" ID="31" TYPE="u32"/>
+					<Attribute name="AC_CONTENTION_NUM_SAMPLES" ID="32" TYPE="u32"/>
+				</Attribute>
+				<Attribute name="NUM_PEERS" ID="33" TYPE="u32"/>
+			</Case>
+			<Case value="3" name="LLSTATS_TYPE_PEERS">
+				<Attribute name="NUM_PEERS" ID="33" TYPE="u32"/>
+				<Attribute name="PEER_INFO" ID="68" TYPE="NESTED" ATTR_MAX="76">
+					<Attribute name="TYPE" ID="34" TYPE="u32"/>
+					<Attribute name="MAC_ADDRESS" ID="35" TYPE="mac_addr"/>
+					<Attribute name="CAPABILITIES" ID="36" TYPE="u32"/>
+					<Attribute name="NUM_RATES" ID="37" TYPE="u32"/>
+					<Attribute name="RATE_INFO" ID="69" TYPE="NESTED" ATTR_MAX="76">
+						<Attribute name="PREAMBLE" ID="38" TYPE="u32"/>
+						<Attribute name="NSS" ID="39" TYPE="u32"/>
+						<Attribute name="BW" ID="40" TYPE="u32"/>
+						<Attribute name="MCS_INDEX" ID="41" TYPE="u32"/>
+						<Attribute name="BIT_RATE" ID="42" TYPE="u32"/>
+						<Attribute name="TX_MPDU" ID="43" TYPE="u32"/>
+						<Attribute name="RX_MPDU" ID="44" TYPE="u32"/>
+						<Attribute name="MPDU_LOST" ID="45" TYPE="u32"/>
+						<Attribute name="RETRIES" ID="46" TYPE="u32"/>
+						<Attribute name="RETRIES_SHORT" ID="47" TYPE="u32"/>
+						<Attribute name="RETRIES_LONG" ID="48" TYPE="u32"/>
+					</Attribute>
+				</Attribute>
+			</Case>
+			</Switch>
+		</VendorRsp>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_LL_STATS_CLR = 16 -->
+	<VendorCmd name="CLEAR_LL_STATS" ID="16">
+		<Attribute name="LL_STATS_CLR_CONFIG_REQ_MASK" ID="1" TYPE="U32"/>
+		<Attribute name="LL_STATS_CLR_CONFIG_STOP_REQ" ID="2" TYPE="U32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_LL_STATS_RADIO_RESULTS = 17 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_LL_STATS_IFACE_RESULTS = 18 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_LL_STATS_PEERS_RESULTS = 19 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_START = 20 -->
+	<VendorCmd name="EXTSCAN_START" ID="20">
+		<Attribute name="REQUEST_ID" ID="1" TYPE="u32"/>
+		<Attribute name="BASE_PERIOD" ID="14" TYPE="u32"/>
+		<Attribute name="MAX_AP_PER_SCAN" ID="15" TYPE="u32"/>
+		<Attribute name="REPORT_THRESHOLD_PERCENT" ID="16" TYPE="u8"/>
+		<Attribute name="REPORT_THRESHOLD_NUM_SCANS" ID="35" TYPE="u8"/>
+		<Attribute name="NUM_BUCKETS" ID="17" TYPE="u8"/>
+		<Attribute name="BUCKET_SPEC" ID="18" TYPE="NESTED" ATTR_MAX="76">
+			<Attribute name="SPEC_INDEX" ID="8" TYPE="u8"/>
+			<Attribute name="BAND" ID="9" TYPE="u8"/>
+			<Attribute name="PERIOD" ID="10" TYPE="u32"/>
+			<Attribute name="REPORT_EVENTS" ID="11" TYPE="u8"/>
+			<Attribute name="NUM_CHANNEL_SPECS" ID="12" TYPE="u32"/>
+			<Attribute name="MAX_PERIOD" ID="32" TYPE="u32"/>
+			<Attribute name="EXPONENT" ID="33" TYPE="u32"/>
+			<Attribute name="STEP_COUNT" ID="34" TYPE="u32"/>
+			<Attribute name="CHANNEL_SPEC" ID="13" TYPE="NESTED" ATTR_MAX="76">
+				<Attribute name="CHANNEL" ID="4" TYPE="u32"/>
+				<Attribute name="DWELL_TIME" ID="5" TYPE="u32"/>
+				<Attribute name="PASSIVE" ID="6" TYPE="u32"/>
+			</Attribute>
+		</Attribute>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_STOP = 21 -->
+	<VendorCmd name="EXTSCAN_STOP" ID="21">
+		<Attribute name="REQUEST_ID" ID="1" TYPE="u32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_GET_VALID_CHANNELS = 22 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_GET_CAPABILITIES = 23 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_GET_CACHED_RESULTS = 24 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_SCAN_RESULTS_AVAILABLE = 25 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_FULL_SCAN_RESULT = 26 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_SCAN_EVENT = 27 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_HOTLIST_AP_FOUND = 28 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_SET_BSSID_HOTLIST = 29 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_RESET_BSSID_HOTLIST = 30 -->
+	<VendorCmd name="EXTSCAN_RESET_BSSID_HOTLIST" ID="30">
+		<Attribute name="CONFIG_PARAM_REQUEST_ID" ID="1" TYPE="u32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_SIGNIFICANT_CHANGE = 31 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_SET_SIGNIFICANT_CHANGE = 32 -->
+	<VendorCmd name="EXTSCAN_SET_SIGNIFICANT_CHANGE" ID="32">
+		<Attribute name="CONFIG_PARAM_REQUEST_ID" ID="1" TYPE="u32"/>
+		<Attribute name="CONFIG_PARAM_RSSI_SAMPLE_SIZE" ID="27" TYPE="u32"/>
+		<Attribute name="CONFIG_PARAM_LOST_AP_SAMPLE_SIZE" ID="28" TYPE="u32"/>
+		<Attribute name="CONFIG_PARAM_MIN_BREACHING" ID="29" TYPE="u32"/>
+		<Attribute name="CONFIG_PARAM_NUM_AP" ID="30" TYPE="u32"/>
+		<Attribute name="CONFIG_PARAM_AP_THRESHOLD_PARAM" ID="26" TYPE="NESTED" ATTR_MAX="76">
+			<Attribute name="AP_THRESHOLD_PARAM_BSSID" ID="21" TYPE="mac_addr"/>
+			<Attribute name="AP_THRESHOLD_PARAM_RSSI_LOW" ID="22" TYPE="u32"/>
+			<Attribute name="AP_THRESHOLD_PARAM_RSSI_HIGH" ID="23" TYPE="u32"/>
+		</Attribute>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_RESET_SIGNIFICANT_CHANGE = 33 -->
+	<VendorCmd name="EXTSCAN_PNO_RESET_SIGNIFICANT_CHANGE" ID="33">
+		<Attribute name="CONFIG_PARAM_REQUEST_ID" ID="1" TYPE="u32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_TDLS_ENABLE = 34 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_TDLS_DISABLE = 35 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_TDLS_GET_STATUS = 36 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_TDLS_STATE = 37 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_SUPPORTED_FEATURES = 38 -->
+	<VendorCmd name="GET_SUPPORTED_FEATURES" ID="38"/>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SCANNING_MAC_OUI = 39 -->
+	<VendorCmd name="SCANNING_MAC_OUI" ID="39">
+		<Attribute name="OUI" ID="1" TYPE="BLOB"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_NO_DFS_FLAG = 40 -->
+	<VendorCmd name="NO_DFS_FLAG" ID="40">
+		<Attribute name="SET_NO_DFS_FLAG" ID="1" TYPE="u32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_HOTLIST_AP_LOST = 41 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_CONCURRENCY_MATRIX = 42 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_KEY_MGMT_SET_KEY = 50 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_KEY_MGMT_ROAM_AUTH = 51 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_APFIND = 52 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_OCB_SET_SCHED = 53 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DO_ACS = 54 -->
+	<VendorCmd name="ACS" ID="54">
+		<Attribute name="HW_MODE" ID="3" TYPE="u8"/>
+		<Attribute name="HT_ENABLED" ID="4" TYPE="FLAG"/>
+		<Attribute name="HT40_ENABLED" ID="5" TYPE="FLAG"/>
+		<Attribute name="VHT_ENABLED" ID="6" TYPE="FLAG"/>
+		<Attribute name="CHWIDTH" ID="7" TYPE="u16"/>
+		<Attribute name="CH_LIST" ID="8" TYPE="BLOB"/>
+		<Attribute name="FREQ_LIST" ID="11" TYPE="BLOB"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_FEATURES = 55 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DFS_OFFLOAD_CAC_STARTED = 56 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DFS_OFFLOAD_CAC_FINISHED = 57 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DFS_OFFLOAD_CAC_ABORTED = 58 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DFS_OFFLOAD_CAC_NOP_FINISHED = 59 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DFS_OFFLOAD_RADAR_DETECTED = 60 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_WIFI_INFO = 61 -->
+	<VendorCmd name="GET_WIFI_INFO" ID="61">
+		<Attribute name="DRIVER_VERSION" ID="1" TYPE="u8"/>
+		<Attribute name="FIRMWARE_VERSION" ID="2" TYPE="u8"/>
+		<Attribute name="RADIO_INDEX" ID="3" TYPE="u32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_WIFI_LOGGER_START = 62 -->
+	<VendorCmd name="WIFI_LOGGER_START" ID="62">
+		<Attribute name="RING_ID" ID="1" TYPE="u32"/>
+		<Attribute name="VBV_LVL" ID="2" TYPE="u32"/>
+		<Attribute name="IS_IW_CMD" ID="3" TYPE="u32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_WIFI_LOGGER_MEMORY_DUMP = 63 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_ROAM = 64 -->
+	<VendorCmd name="ROAM" ID="64">
+		<Attribute name="ROAMING_SUBCMD" ID="1" TYPE="u32"/>
+		<Attribute name="ROAMING_REQ_ID" ID="2" TYPE="u32"/>
+		<Switch name="ROAMING_SUBCMD">
+		<Case value="1" name="SUBCMD_SSID_WHITE_LIST">
+			<Attribute name="WHITE_LIST_SSID_NUM_NETWORKS" ID="3" TYPE="u32"/>
+			<Attribute name="WHITE_LIST_SSID_LIST" ID="4" TYPE="NESTED" ATTR_MAX="76">
+				<Attribute name="WHITE_LIST_SSID" ID="5" TYPE="string"/>
+			</Attribute>
+		</Case>
+		<Case value="2" name="SUBCMD_SET_EXTSCAN_ROAM_PARAMS">
+			<Attribute name="A_BAND_BOOST_THRESHOLD" ID="6" TYPE="u32"/>
+			<Attribute name="A_BAND_PENALTY_THRESHOLD" ID="7" TYPE="u32"/>
+			<Attribute name="A_BAND_BOOST_FACTOR" ID="8" TYPE="u32"/>
+			<Attribute name="A_BAND_PENALTY_FACTOR" ID="9" TYPE="u32"/>
+			<Attribute name="A_BAND_MAX_BOOST" ID="10" TYPE="u32"/>
+			<Attribute name="LAZY_ROAM_HISTERESYS" ID="11" TYPE="u32"/>
+			<Attribute name="ALERT_ROAM_RSSI_TRIGGER" ID="12" TYPE="u32"/>
+		</Case>
+		<Case value="3" name="SUBCMD_SET_LAZY_ROAM">
+			<Attribute name="SET_LAZY_ROAM_ENABLE" ID="13" TYPE="u32"/>
+		</Case>
+		<Case value="4" name="SUBCMD_SET_BSSID_PREFS">
+			<Attribute name="SET_LAZY_ROAM_NUM_BSSID" ID="15" TYPE="u32"/>
+			<Attribute name="SET_BSSID_PREFS" ID="14" TYPE="NESTED" ATTR_MAX="76">
+				<Attribute name="SET_LAZY_ROAM_BSSID" ID="16" TYPE="mac_addr"/>
+				<Attribute name="SET_LAZY_ROAM_RSSI_MODIFIER" ID="17" TYPE="u32"/>
+			</Attribute>
+		</Case>
+		<Case value="6" name="SUBCMD_SET_BLACKLIST_BSSID">
+			<Attribute name="SET_BSSID_PARAMS_NUM_BSSID" ID="19" TYPE="u32"/>
+			<Attribute name="SET_BSSID_PARAMS" ID="18" TYPE="NESTED" ATTR_MAX="76">
+				<Attribute name="SET_BSSID_PARAMS_BSSID" ID="20" TYPE="mac_addr"/>
+			</Attribute>
+		</Case>
+		</Switch>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_SET_SSID_HOTLIST = 65 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_RESET_SSID_HOTLIST = 66 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_HOTLIST_SSID_FOUND = 67 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_HOTLIST_SSID_LOST = 68 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_PNO_SET_LIST = 69 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_PNO_SET_PASSPOINT_LIST = 70 -->
+	<VendorCmd name="EXTSCAN_PNO_SET_PASSPOINT_LIST" ID="70">
+		<Attribute name="PNO_PASSPOINT_LIST_PARAM_NUM" ID="1" TYPE="u32"/>
+		<Attribute name="PASSPOINT_LIST_PARAM_NETWORK_ARRAY" ID="2" TYPE="NESTED" ATTR_MAX="23">
+			<Attribute name="PNO_PASSPOINT_NETWORK_PARAM_ID" ID="3" TYPE="u32"/>
+			<Attribute name="PNO_PASSPOINT_NETWORK_PARAM_REALM" ID="4" TYPE="string"/>
+			<Attribute name="PASSPOINT_NETWORK_PARAM_ROAM_CNSRTM_ID" ID="5" TYPE="blob"/>
+			<Attribute name="PNO_PASSPOINT_NETWORK_PARAM_ROAM_PLMN" ID="6" TYPE="blob"/>
+		</Attribute>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_PNO_RESET_PASSPOINT_LIST = 71 -->
+	<VendorCmd name="EXTSCAN_PNO_RESET_PASSPOINT_LIST" ID="71">
+		<Attribute name="CONFIG_PARAM_REQUEST_ID" ID="1" TYPE="u32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_PNO_NETWORK_FOUND = 72 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTSCAN_PNO_PASSPOINT_NETWORK_FOUND = 73 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SET_WIFI_CONFIGURATION = 74 -->
+	<VendorCmd name="SET_WIFI_CONFIG" ID="74">
+		<Attribute name="CONFIG_DYNAMIC_DTIM" ID="1" TYPE="u32"/>
+		<Attribute name="CONFIG_STATS_AVG_FACTOR" ID="2" TYPE="u32"/>
+		<Attribute name="CONFIG_GUARD_TIME" ID="3" TYPE="u32"/>
+		<Attribute name="CONFIG_FINE_TIME_MEASUREMENT" ID="4" TYPE="u32"/>
+		<Attribute name="CONFIG_TX_RATE" ID="5" TYPE="u16"/>
+		<Attribute name="CONFIG_PENALIZE_AFTER_NCONS_BEACON_MISS" ID="6" TYPE="u32"/>
+		<Attribute name="CONFIG_CHANNEL_AVOIDANCE_IND" ID="7" TYPE="u8"/>
+		<Attribute name="CONFIG_TX_MPDU_AGGREGATION" ID="8" TYPE="u8"/>
+		<Attribute name="CONFIG_RX_MPDU_AGGREGATION" ID="9" TYPE="u8"/>
+		<Attribute name="CONFIG_NON_AGG_RETRY" ID="10" TYPE="u8"/>
+		<Attribute name="CONFIG_AGG_RETRY" ID="11" TYPE="u8"/>
+		<Attribute name="CONFIG_MGMT_RETRY" ID="12" TYPE="u8"/>
+		<Attribute name="CONFIG_CTRL_RETRY" ID="13" TYPE="u8"/>
+		<Attribute name="CONFIG_PROPAGATION_DELAY" ID="14" TYPE="u8"/>
+		<Attribute name="CONFIG_TX_FAIL_COUNT" ID="15" TYPE="u32"/>
+		<Attribute name="CONFIG_SCAN_DEFAULT_IES" ID="16" TYPE="BLOB"/>
+		<Attribute name="CONFIG_GENERIC_COMMAND" ID="17" TYPE="u32"/>
+		<Attribute name="CONFIG_GENERIC_VALUE" ID="18" TYPE="u32"/>
+		<Attribute name="CONFIG_GENERIC_DATA" ID="19" TYPE="u32"/>
+		<Attribute name="CONFIG_GENERIC_LENGTH" ID="20" TYPE="u32"/>
+		<Attribute name="CONFIG_GENERIC_FLAGS" ID="21" TYPE="u32"/>
+		<Attribute name="CONFIG_ACCESS_POLICY" ID="22" TYPE="u32"/>
+		<Attribute name="CONFIG_ACCESS_POLICY_IE_LIST" ID="23" TYPE="BLOB"/>
+		<Attribute name="CONFIG_IFINDEX" ID="24" TYPE="u32"/>
+		<Attribute name="CONFIG_QPOWER" ID="25" TYPE="u8"/>
+		<Attribute name="CONFIG_IGNORE_ASSOC_DISALLOWED" ID="26" TYPE="u8"/>
+		<Attribute name="CONFIG_ANT_DIV_ENA" ID="27" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_CHAIN" ID="28" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_SELFTEST" ID="29" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_SELFTEST_INTVL" ID="30" TYPE="u32"/>
+		<Attribute name="CONFIG_RX_REORDER_TIMEOUT_VOICE" ID="31" TYPE="u32"/>
+		<Attribute name="CONFIG_RX_REORDER_TIMEOUT_VIDEO" ID="32" TYPE="u32"/>
+		<Attribute name="CONFIG_RX_REORDER_TIMEOUT_BESTEFFORT" ID="33" TYPE="u32"/>
+		<Attribute name="CONFIG_RX_REORDER_TIMEOUT_BACKGROUND" ID="34" TYPE="u32"/>
+		<Attribute name="CONFIG_RX_BLOCKSIZE_PEER_MAC" ID="35" TYPE="BLOB"/>
+		<Attribute name="CONFIG_RX_BLOCKSIZE_WINLIMIT" ID="36" TYPE="u32"/>
+		<Attribute name="CONFIG_BEACON_MISS_THRESHOLD_24" ID="37" TYPE="u8"/>
+		<Attribute name="CONFIG_BEACON_MISS_THRESHOLD_5" ID="38" TYPE="u8"/>
+		<Attribute name="CONFIG_SUB20_CHAN_WIDTH" ID="39" TYPE="u32"/>
+		<Attribute name="CONFIG_PROPAGATION_ABS_DELAY" ID="40" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_PROBE_PERIOD" ID="41" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_STAY_PERIOD" ID="42" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_SNR_DIFF" ID="43" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_PROBE_DWELL_TIME" ID="44" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_MGMT_SNR_WEIGHT" ID="45" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_DATA_SNR_WEIGHT" ID="46" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_ACK_SNR_WEIGHT" ID="47" TYPE="u32"/>
+		<Attribute name="CONFIG_LISTEN_INTERVAL" ID="48" TYPE="u32"/>
+		<Attribute name="CONFIG_RESTRICT_OFFCHANNEL" ID="49" TYPE="u8"/>
+		<Attribute name="CONFIG_LRO" ID="50" TYPE="u8"/>
+		<Attribute name="CONFIG_SCAN_ENABLE" ID="51" TYPE="u8"/>
+		<Attribute name="CONFIG_TOTAL_BEACON_MISS_COUNT" ID="52" TYPE="u8"/>
+		<Attribute name="CONFIG_PENALIZE_AFTER_NCONS_BEACON_MISS_BTC" ID="53" TYPE="u32"/>
+		<Attribute name="CONFIG_DISABLE_FILSCONFIG_DISABLE_FILS" ID="54" TYPE="u8"/>
+		<Attribute name="CONFIG_LATENCY_LEVEL" ID="55" TYPE="u16"/>
+		<Attribute name="CONFIG_RSN_IE" ID="56" TYPE="u8"/>
+		<Attribute name="CONFIG_GTX" ID="57" TYPE="u8"/>
+		<Attribute name="CONFIG_DISCONNECT_IES" ID="58" TYPE="BLOB"/>
+		<Attribute name="CONFIG_ELNA_BYPASS" ID="59" TYPE="u8"/>
+		<Attribute name="CONFIG_BEACON_REPORT_FAIL" ID="60" TYPE="u8"/>
+		<Attribute name="CONFIG_ROAM_REASON" ID="61" TYPE="u8"/>
+		<Attribute name="CONFIG_PHY_MODE" ID="62" TYPE="u32"/>
+		<Attribute name="CONFIG_CHANNEL_WIDTH" ID="63" TYPE="u8"/>
+		<Attribute name="CONFIG_DYNAMIC_BW" ID="64" TYPE="u8"/>
+		<Attribute name="CONFIG_TX_MSDU_AGGREGATION" ID="65" TYPE="u8"/>
+		<Attribute name="CONFIG_RX_MSDU_AGGREGATION" ID="66" TYPE="u8"/>
+		<Attribute name="CONFIG_LDPC" ID="67" TYPE="u8"/>
+		<Attribute name="CONFIG_TX_STBC" ID="68" TYPE="u8"/>
+		<Attribute name="CONFIG_RX_STBC" ID="69" TYPE="u8"/>
+		<Attribute name="CONFIG_NSS" ID="70" TYPE="u8"/>
+		<Attribute name="CONFIG_OPTIMIZED_POWER_MANAGEMENT" ID="71" TYPE="u8"/>
+		<Attribute name="CONFIG_UDP_QOS_UPGRADE" ID="72" TYPE="u8"/>
+		<Attribute name="CONFIG_NUM_TX_CHAINS" ID="73" TYPE="u8"/>
+		<Attribute name="CONFIG_NUM_RX_CHAINS" ID="74" TYPE="u8"/>
+		<Attribute name="CONFIG_ANI_SETTING" ID="75" TYPE="u8"/>
+		<Attribute name="CONFIG_ANI_LEVEL" ID="76" TYPE="u32"/>
+		<Attribute name="CONFIG_TX_NSS" ID="77" TYPE="u8"/>
+		<Attribute name="CONFIG_RX_NSS" ID="78" TYPE="u8"/>
+		<Attribute name="CONFIG_CONCURRENT_STA_PRIMARY" ID="79" TYPE="u8"/>
+		<Attribute name="CONFIG_FT_OVER_DS" ID="80" TYPE="u8"/>
+		<Attribute name="CONFIG_ARP_NS_OFFLOAD" ID="81" TYPE="u8"/>
+		<Attribute name="CONFIG_AUDIO_DATA_PATH" ID="82" TYPE="u8"/>
+		<Attribute name="CONFIG_DBAM" ID="83" TYPE="u8"/>
+		<Attribute name="CONFIG_TX_NSS_2GHZ" ID="110" TYPE="u8"/>
+		<Attribute name="CONFIG_RX_NSS_2GHZ" ID="111" TYPE="u8"/>
+		<Attribute name="CONFIG_TX_NSS_5GHZ" ID="112" TYPE="u8"/>
+		<Attribute name="CONFIG_RX_NSS_5GHZ" ID="113" TYPE="u8"/>
+		<Attribute name="CONFIG_NUM_TX_CHAINS_2GHZ" ID="114" TYPE="u8"/>
+		<Attribute name="CONFIG_NUM_RX_CHAINS_2GHZ" ID="115" TYPE="u8"/>
+		<Attribute name="CONFIG_NUM_TX_CHAINS_5GHZ" ID="116" TYPE="u8"/>
+		<Attribute name="CONFIG_NUM_RX_CHAINS_5GHZ" ID="117" TYPE="u8"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_WIFI_CONFIGURATION = 75 -->
+	<VendorCmd name="GET_WIFI_CONFIG" ID="75">
+		<Attribute name="CONFIG_DYNAMIC_DTIM" ID="1" TYPE="u32"/>
+		<Attribute name="CONFIG_STATS_AVG_FACTOR" ID="2" TYPE="u32"/>
+		<Attribute name="CONFIG_GUARD_TIME" ID="3" TYPE="u32"/>
+		<Attribute name="CONFIG_FINE_TIME_MEASUREMENT" ID="4" TYPE="u32"/>
+		<Attribute name="CONFIG_TX_RATE" ID="5" TYPE="u16"/>
+		<Attribute name="CONFIG_PENALIZE_AFTER_NCONS_BEACON_MISS" ID="6" TYPE="u32"/>
+		<Attribute name="CONFIG_CHANNEL_AVOIDANCE_IND" ID="7" TYPE="u8"/>
+		<Attribute name="CONFIG_TX_MPDU_AGGREGATION" ID="8" TYPE="u8"/>
+		<Attribute name="CONFIG_RX_MPDU_AGGREGATION" ID="9" TYPE="u8"/>
+		<Attribute name="CONFIG_NON_AGG_RETRY" ID="10" TYPE="u8"/>
+		<Attribute name="CONFIG_AGG_RETRY" ID="11" TYPE="u8"/>
+		<Attribute name="CONFIG_MGMT_RETRY" ID="12" TYPE="u8"/>
+		<Attribute name="CONFIG_CTRL_RETRY" ID="13" TYPE="u8"/>
+		<Attribute name="CONFIG_PROPAGATION_DELAY" ID="14" TYPE="u8"/>
+		<Attribute name="CONFIG_TX_FAIL_COUNT" ID="15" TYPE="u32"/>
+		<Attribute name="CONFIG_SCAN_DEFAULT_IES" ID="16" TYPE="BLOB"/>
+		<Attribute name="CONFIG_GENERIC_COMMAND" ID="17" TYPE="u32"/>
+		<Attribute name="CONFIG_GENERIC_VALUE" ID="18" TYPE="u32"/>
+		<Attribute name="CONFIG_GENERIC_DATA" ID="19" TYPE="u32"/>
+		<Attribute name="CONFIG_GENERIC_LENGTH" ID="20" TYPE="u32"/>
+		<Attribute name="CONFIG_GENERIC_FLAGS" ID="21" TYPE="u32"/>
+		<Attribute name="CONFIG_ACCESS_POLICY" ID="22" TYPE="u32"/>
+		<Attribute name="CONFIG_ACCESS_POLICY_IE_LIST" ID="23" TYPE="BLOB"/>
+		<Attribute name="CONFIG_IFINDEX" ID="24" TYPE="u32"/>
+		<Attribute name="CONFIG_QPOWER" ID="25" TYPE="u8"/>
+		<Attribute name="CONFIG_IGNORE_ASSOC_DISALLOWED" ID="26" TYPE="u8"/>
+		<Attribute name="CONFIG_ANT_DIV_ENA" ID="27" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_CHAIN" ID="28" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_SELFTEST" ID="29" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_SELFTEST_INTVL" ID="30" TYPE="u32"/>
+		<Attribute name="CONFIG_RX_REORDER_TIMEOUT_VOICE" ID="31" TYPE="u32"/>
+		<Attribute name="CONFIG_RX_REORDER_TIMEOUT_VIDEO" ID="32" TYPE="u32"/>
+		<Attribute name="CONFIG_RX_REORDER_TIMEOUT_BESTEFFORT" ID="33" TYPE="u32"/>
+		<Attribute name="CONFIG_RX_REORDER_TIMEOUT_BACKGROUND" ID="34" TYPE="u32"/>
+		<Attribute name="CONFIG_RX_BLOCKSIZE_PEER_MAC" ID="35" TYPE="BLOB"/>
+		<Attribute name="CONFIG_RX_BLOCKSIZE_WINLIMIT" ID="36" TYPE="u32"/>
+		<Attribute name="CONFIG_BEACON_MISS_THRESHOLD_24" ID="37" TYPE="u8"/>
+		<Attribute name="CONFIG_BEACON_MISS_THRESHOLD_5" ID="38" TYPE="u8"/>
+		<Attribute name="CONFIG_SUB20_CHAN_WIDTH" ID="39" TYPE="u32"/>
+		<Attribute name="CONFIG_PROPAGATION_ABS_DELAY" ID="40" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_PROBE_PERIOD" ID="41" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_STAY_PERIOD" ID="42" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_SNR_DIFF" ID="43" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_PROBE_DWELL_TIME" ID="44" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_MGMT_SNR_WEIGHT" ID="45" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_DATA_SNR_WEIGHT" ID="46" TYPE="u32"/>
+		<Attribute name="CONFIG_ANT_DIV_ACK_SNR_WEIGHT" ID="47" TYPE="u32"/>
+		<Attribute name="CONFIG_LISTEN_INTERVAL" ID="48" TYPE="u32"/>
+		<Attribute name="CONFIG_RESTRICT_OFFCHANNEL" ID="49" TYPE="u8"/>
+		<Attribute name="CONFIG_LRO" ID="50" TYPE="u8"/>
+		<Attribute name="CONFIG_SCAN_ENABLE" ID="51" TYPE="u8"/>
+		<Attribute name="CONFIG_TOTAL_BEACON_MISS_COUNT" ID="52" TYPE="u8"/>
+		<Attribute name="CONFIG_PENALIZE_AFTER_NCONS_BEACON_MISS_BTC" ID="53" TYPE="u32"/>
+		<Attribute name="CONFIG_DISABLE_FILSCONFIG_DISABLE_FILS" ID="54" TYPE="u8"/>
+		<Attribute name="CONFIG_LATENCY_LEVEL" ID="55" TYPE="u16"/>
+		<Attribute name="CONFIG_RSN_IE" ID="56" TYPE="u8"/>
+		<Attribute name="CONFIG_GTX" ID="57" TYPE="u8"/>
+		<Attribute name="CONFIG_DISCONNECT_IES" ID="58" TYPE="BLOB"/>
+		<Attribute name="CONFIG_ELNA_BYPASS" ID="59" TYPE="u8"/>
+		<Attribute name="CONFIG_BEACON_REPORT_FAIL" ID="60" TYPE="u8"/>
+		<Attribute name="CONFIG_ROAM_REASON" ID="61" TYPE="u8"/>
+		<Attribute name="CONFIG_PHY_MODE" ID="62" TYPE="u32"/>
+		<Attribute name="CONFIG_CHANNEL_WIDTH" ID="63" TYPE="u8"/>
+		<Attribute name="CONFIG_DYNAMIC_BW" ID="64" TYPE="u8"/>
+		<Attribute name="CONFIG_TX_MSDU_AGGREGATION" ID="65" TYPE="u8"/>
+		<Attribute name="CONFIG_RX_MSDU_AGGREGATION" ID="66" TYPE="u8"/>
+		<Attribute name="CONFIG_LDPC" ID="67" TYPE="u8"/>
+		<Attribute name="CONFIG_TX_STBC" ID="68" TYPE="u8"/>
+		<Attribute name="CONFIG_RX_STBC" ID="69" TYPE="u8"/>
+		<Attribute name="CONFIG_NSS" ID="70" TYPE="u8"/>
+		<VendorRsp name="GET_WIFI_CONFIG" ID="75" ATTR_MAX="71">
+			<Attribute name="CONFIG_DYNAMIC_DTIM" ID="1" TYPE="u32"/>
+			<Attribute name="CONFIG_STATS_AVG_FACTOR" ID="2" TYPE="u32"/>
+			<Attribute name="CONFIG_GUARD_TIME" ID="3" TYPE="u32"/>
+			<Attribute name="CONFIG_FINE_TIME_MEASUREMENT" ID="4" TYPE="u32"/>
+			<Attribute name="CONFIG_TX_RATE" ID="5" TYPE="u16"/>
+			<Attribute name="CONFIG_PENALIZE_AFTER_NCONS_BEACON_MISS" ID="6" TYPE="u32"/>
+			<Attribute name="CONFIG_CHANNEL_AVOIDANCE_IND" ID="7" TYPE="u8"/>
+			<Attribute name="CONFIG_TX_MPDU_AGGREGATION" ID="8" TYPE="u8"/>
+			<Attribute name="CONFIG_RX_MPDU_AGGREGATION" ID="9" TYPE="u8"/>
+			<Attribute name="CONFIG_NON_AGG_RETRY" ID="10" TYPE="u8"/>
+			<Attribute name="CONFIG_AGG_RETRY" ID="11" TYPE="u8"/>
+			<Attribute name="CONFIG_MGMT_RETRY" ID="12" TYPE="u8"/>
+			<Attribute name="CONFIG_CTRL_RETRY" ID="13" TYPE="u8"/>
+			<Attribute name="CONFIG_PROPAGATION_DELAY" ID="14" TYPE="u8"/>
+			<Attribute name="CONFIG_TX_FAIL_COUNT" ID="15" TYPE="u32"/>
+			<Attribute name="CONFIG_SCAN_DEFAULT_IES" ID="16" TYPE="BLOB"/>
+			<Attribute name="CONFIG_GENERIC_COMMAND" ID="17" TYPE="u32"/>
+			<Attribute name="CONFIG_GENERIC_VALUE" ID="18" TYPE="u32"/>
+			<Attribute name="CONFIG_GENERIC_DATA" ID="19" TYPE="u32"/>
+			<Attribute name="CONFIG_GENERIC_LENGTH" ID="20" TYPE="u32"/>
+			<Attribute name="CONFIG_GENERIC_FLAGS" ID="21" TYPE="u32"/>
+			<Attribute name="CONFIG_ACCESS_POLICY" ID="22" TYPE="u32"/>
+			<Attribute name="CONFIG_ACCESS_POLICY_IE_LIST" ID="23" TYPE="BLOB"/>
+			<Attribute name="CONFIG_IFINDEX" ID="24" TYPE="u32"/>
+			<Attribute name="CONFIG_QPOWER" ID="25" TYPE="u8"/>
+			<Attribute name="CONFIG_IGNORE_ASSOC_DISALLOWED" ID="26" TYPE="u8"/>
+			<Attribute name="CONFIG_ANT_DIV_ENA" ID="27" TYPE="u32"/>
+			<Attribute name="CONFIG_ANT_DIV_CHAIN" ID="28" TYPE="u32"/>
+			<Attribute name="CONFIG_ANT_DIV_SELFTEST" ID="29" TYPE="u32"/>
+			<Attribute name="CONFIG_ANT_DIV_SELFTEST_INTVL" ID="30" TYPE="u32"/>
+			<Attribute name="CONFIG_RX_REORDER_TIMEOUT_VOICE" ID="31" TYPE="u32"/>
+			<Attribute name="CONFIG_RX_REORDER_TIMEOUT_VIDEO" ID="32" TYPE="u32"/>
+			<Attribute name="CONFIG_RX_REORDER_TIMEOUT_BESTEFFORT" ID="33" TYPE="u32"/>
+			<Attribute name="CONFIG_RX_REORDER_TIMEOUT_BACKGROUND" ID="34" TYPE="u32"/>
+			<Attribute name="CONFIG_RX_BLOCKSIZE_PEER_MAC" ID="35" TYPE="BLOB"/>
+			<Attribute name="CONFIG_RX_BLOCKSIZE_WINLIMIT" ID="36" TYPE="u32"/>
+			<Attribute name="CONFIG_BEACON_MISS_THRESHOLD_24" ID="37" TYPE="u8"/>
+			<Attribute name="CONFIG_BEACON_MISS_THRESHOLD_5" ID="38" TYPE="u8"/>
+			<Attribute name="CONFIG_SUB20_CHAN_WIDTH" ID="39" TYPE="u32"/>
+			<Attribute name="CONFIG_PROPAGATION_ABS_DELAY" ID="40" TYPE="u32"/>
+			<Attribute name="CONFIG_ANT_DIV_PROBE_PERIOD" ID="41" TYPE="u32"/>
+			<Attribute name="CONFIG_ANT_DIV_STAY_PERIOD" ID="42" TYPE="u32"/>
+			<Attribute name="CONFIG_ANT_DIV_SNR_DIFF" ID="43" TYPE="u32"/>
+			<Attribute name="CONFIG_ANT_DIV_PROBE_DWELL_TIME" ID="44" TYPE="u32"/>
+			<Attribute name="CONFIG_ANT_DIV_MGMT_SNR_WEIGHT" ID="45" TYPE="u32"/>
+			<Attribute name="CONFIG_ANT_DIV_DATA_SNR_WEIGHT" ID="46" TYPE="u32"/>
+			<Attribute name="CONFIG_ANT_DIV_ACK_SNR_WEIGHT" ID="47" TYPE="u32"/>
+			<Attribute name="CONFIG_LISTEN_INTERVAL" ID="48" TYPE="u32"/>
+			<Attribute name="CONFIG_RESTRICT_OFFCHANNEL" ID="49" TYPE="u8"/>
+			<Attribute name="CONFIG_LRO" ID="50" TYPE="u8"/>
+			<Attribute name="CONFIG_SCAN_ENABLE" ID="51" TYPE="u8"/>
+			<Attribute name="CONFIG_TOTAL_BEACON_MISS_COUNT" ID="52" TYPE="u8"/>
+			<Attribute name="CONFIG_PENALIZE_AFTER_NCONS_BEACON_MISS_BTC" ID="53" TYPE="u32"/>
+			<Attribute name="CONFIG_DISABLE_FILSCONFIG_DISABLE_FILS" ID="54" TYPE="u8"/>
+			<Attribute name="CONFIG_LATENCY_LEVEL" ID="55" TYPE="u16"/>
+			<Attribute name="CONFIG_RSN_IE" ID="56" TYPE="u8"/>
+			<Attribute name="CONFIG_GTX" ID="57" TYPE="u8"/>
+			<Attribute name="CONFIG_DISCONNECT_IES" ID="58" TYPE="BLOB"/>
+			<Attribute name="CONFIG_ELNA_BYPASS" ID="59" TYPE="u8"/>
+			<Attribute name="CONFIG_BEACON_REPORT_FAIL" ID="60" TYPE="u8"/>
+			<Attribute name="CONFIG_ROAM_REASON" ID="61" TYPE="u8"/>
+			<Attribute name="CONFIG_PHY_MODE" ID="62" TYPE="u32"/>
+			<Attribute name="CONFIG_CHANNEL_WIDTH" ID="63" TYPE="u8"/>
+			<Attribute name="CONFIG_DYNAMIC_BW" ID="64" TYPE="u8"/>
+			<Attribute name="CONFIG_TX_MSDU_AGGREGATION" ID="65" TYPE="u8"/>
+			<Attribute name="CONFIG_RX_MSDU_AGGREGATION" ID="66" TYPE="u8"/>
+			<Attribute name="CONFIG_LDPC" ID="67" TYPE="u8"/>
+			<Attribute name="CONFIG_TX_STBC" ID="68" TYPE="u8"/>
+			<Attribute name="CONFIG_RX_STBC" ID="69" TYPE="u8"/>
+			<Attribute name="CONFIG_NSS" ID="70" TYPE="u8"/>
+		</VendorRsp>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_LOGGER_FEATURE_SET = 76 -->
+	<VendorCmd name="GET_LOGGER_FEATURE_SET" ID="76"/>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_RING_DATA = 77 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_TDLS_GET_CAPABILITIES = 78 -->
+	<VendorCmd name="TDLS_GET_CAP" ID="78"/>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_OFFLOADED_PACKETS = 79 -->
+        <VendorCmd name="OFFLOADED_PACKETS" ID="79">
+		<Attribute name="SENDING_CONTROL" ID="1" TYPE="u32"/>
+		<Attribute name="REQUEST_ID" ID="2" TYPE="u32"/>
+		<Attribute name="IP_PACKET_DATA" ID="3" TYPE="blob"/>
+		<Attribute name="SRC_MAC_ADDR" ID="4" TYPE="mac_addr"/>
+		<Attribute name="DST_MAC_ADDR" ID="5" TYPE="mac_addr"/>
+		<Attribute name="PERIOD" ID="6" TYPE="u32"/>
+		<Attribute name="ETHER_PROTO_TYPE" ID="7" TYPE="u16"/>
+        </VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_MONITOR_RSSI = 80 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_NDP = 81 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_ND_OFFLOAD = 82 -->
+	<VendorCmd name="ND_OFFLOAD" ID="82">
+		<Attribute name="ND_OFFLOAD_FLAG" ID="1" TYPE="u8"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_PACKET_FILTER = 83 -->
+	<VendorCmd name="PACKET_FILTER" ID="83">
+		<Attribute name="SET_RESET_PACKET_FILTER" ID="1" TYPE="u32"/>
+		<Switch name="SET_RESET_PACKET_FILTER">
+		<Case value="1" name="SET_PACKET_FILTER">
+			<Attribute name="PACKET_FILTER_SIZE" ID="4" TYPE="u32"/>
+			<Attribute name="PACKET_FILTER_PROGRAM" ID="6" TYPE="blob"/>
+			<Attribute name="PACKET_FILTER_ID" ID="3" TYPE="u32"/>
+			<Attribute name="PACKET_FILTER_CURRENT_OFFSET" ID="5" TYPE="u32"/>
+		</Case>
+		<Case value="2" name="GET_PACKET_FILTER"/>
+		<Case value="3" name="WRITE_PACKET_FILTER">
+			<Attribute name="PACKET_FILTER_PROGRAM" ID="6" TYPE="blob"/>
+			<Attribute name="PACKET_FILTER_PROG_LENGTH" ID="7" TYPE="u32"/>
+			<Attribute name="PACKET_FILTER_CURRENT_OFFSET" ID="5" TYPE="u32"/>
+		</Case>
+		<Case value="4" name="READ_PACKET_FILTER">
+			<Attribute name="PACKET_FILTER_SIZE" ID="4" TYPE="u32"/>
+			<Attribute name="PACKET_FILTER_CURRENT_OFFSET" ID="5" TYPE="u32"/>
+		</Case>
+		<Case value="5" name="ENABLE_PACKET_FILTER"/>
+		<Case value="6" name="DISABLE_PACKET_FILTER"/>
+		</Switch>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_BUS_SIZE = 84 -->
+	<VendorCmd name="GET_BUS_SIZE" ID="84">
+		<Attribute name="DRV_INFO_BUS_SIZE" ID="1" TYPE="u16"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_WAKE_REASON_STATS = 85 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DATA_OFFLOAD = 91 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_OCB_SET_CONFIG = 92 -->
+	<VendorCmd name="OCB_SET_CONFIG" ID="92">
+		<Attribute name="CHANNEL_COUNT" ID="1" TYPE="u32"/>
+		<Attribute name="SCHEDULE_SIZE" ID="2" TYPE="u32"/>
+		<Attribute name="CHANNEL_ARRAY" ID="3" TYPE="blob"/>
+		<Attribute name="SCHEDULE_ARRAY" ID="4" TYPE="blob"/>
+		<Attribute name="NDL_CHANNEL_ARRAY" ID="5" TYPE="blob"/>
+		<Attribute name="NDL_ACTIVE_STATE_ARRAY" ID="6" TYPE="blob"/>
+		<Attribute name="FLAGS" ID="7" TYPE="u32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_OCB_SET_UTC_TIME = 93 -->
+	<VendorCmd name="OCB_SET_UTC_TIME" ID="93">
+		<Attribute name="UTC_TIME_VALUE" ID="1" TYPE="blob"/>
+		<Attribute name="UTC_TIME_ERROR" ID="2" TYPE="blob"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_OCB_START_TIMING_ADVERT = 94 -->
+	<VendorCmd name="OCB_START_TIMING_ADVERT" ID="94">
+		<Attribute name="CHANNEL_FREQ" ID="1" TYPE="u32"/>
+		<Attribute name="REPEAT_RATE" ID="2" TYPE="u32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_OCB_STOP_TIMING_ADVERT = 95 -->
+	<VendorCmd name="OCB_STOP_TIMING_ADVERT" ID="95">
+		<Attribute name="CHANNEL_FREQ" ID="1" TYPE="u32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_OCB_GET_TSF_TIMER = 96 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DCC_GET_STATS = 97 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DCC_CLEAR_STATS = 98 -->
+	<VendorCmd name="DCC_CLEAR_STATS" ID="98">
+		<Attribute name="BITMAP" ID="1" TYPE="u32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DCC_UPDATE_NDL = 99 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DCC_STATS_EVENT = 100 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_LINK_PROPERTIES = 101 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GW_PARAM_CONFIG = 102 -->
+	<VendorCmd name="GW_PARAM_CONFIG" ID="102">
+		<Attribute name="PARAM_MAC_ADDR" ID="1" TYPE="mac_addr"/>
+		<Attribute name="PARAM_IPV4_ADDR" ID="2" TYPE="blob"/>
+		<Attribute name="PARAM_IPV6_ADDR" ID="3" TYPE="blob"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_PREFERRED_FREQ_LIST = 103 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SET_PROBABLE_OPER_CHANNEL = 104 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SETBAND = 105 -->
+	<VendorCmd name="SETBAND" ID="105">
+		<Attribute name="SETBAND_VALUE" ID="12" TYPE="u32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_TRIGGER_SCAN = 106 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SCAN_DONE = 107 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_OTA_TEST = 108 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SET_TXPOWER_SCALE = 109 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SET_TXPOWER_SCALE_DECR_DB = 115 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_ACS_POLICY = 116 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_STA_CONNECT_ROAM_POLICY = 117 -->
+	<VendorCmd name="STA_CONNECT_ROAM_POLICY" ID="117">
+		<Attribute name="STA_DFS_MODE" ID="1" TYPE="u8"/>
+		<Attribute name="STA_SKIP_UNSAFE_CHANNEL" ID="2" TYPE="u8"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SET_SAP_CONFIG = 118 -->
+	<VendorCmd name="SET_SAP_CONFIG" ID="118">
+		<Attribute name="SAP_CONFIG_CHANNEL" ID="1" TYPE="u32"/>
+		<Attribute name="MANDATORY_FREQUENCY_LIST" ID="2" TYPE="blob"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_TSF = 119 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_WISA = 120 -->
+	<VendorCmd name="WISA" ID="120">
+		<Attribute name="WISA_MODE" ID="1" TYPE="u32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_STATION = 121 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_P2P_LISTEN_OFFLOAD_START = 122 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_P2P_LISTEN_OFFLOAD_STOP = 123 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SAP_CONDITIONAL_CHAN_SWITCH = 124 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GPIO_CONFIG_COMMAND = 125 -->
+	<VendorCmd name="GPIO_CONFIG" ID="125">
+		<Attribute name="GPIO_COMMAND" ID="1" TYPE="u32"/>
+		<Attribute name="GPIO_PINNUM" ID="2" TYPE="u32"/>
+		<Attribute name="GPIO_VALUE" ID="3" TYPE="u32"/>
+		<Attribute name="GPIO_PULL_TYPE" ID="4" TYPE="u32"/>
+		<Attribute name="GPIO_INTR" ID="5" TYPE="u32"/>
+		<Attribute name="GPIO_DIR" ID="6" TYPE="u32"/>
+		<Attribute name="GPIO_MUX_CONFIG" ID="7" TYPE="u32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_HW_CAPABILITY = 126 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_LL_STATS_EXT = 127 -->
+	<VendorCmd name="LL_STATS_EXT" ID="127">
+		<Attribute name="CFG_PERIOD" ID="1" TYPE="u32"/>
+		<Attribute name="CFG_THRESHOLD" ID="2" TYPE="u32"/>
+		<Attribute name="GLOBAL" ID="9" TYPE="u32"/>
+		<Attribute name="TX_BITMAP" ID="13" TYPE="u32"/>
+		<Attribute name="RX_BITMAP" ID="14" TYPE="u32"/>
+		<Attribute name="CCA_BSS_BITMAP" ID="15" TYPE="u32"/>
+		<Attribute name="SIGNAL_BITMAP" ID="16" TYPE="u32"/>
+		<Attribute name="TX_MSDU" ID="21" TYPE="u32"/>
+		<Attribute name="TX_MPDU" ID="22" TYPE="u32"/>
+		<Attribute name="TX_PPDU" ID="23" TYPE="u32"/>
+		<Attribute name="TX_BYTES" ID="24" TYPE="u32"/>
+		<Attribute name="TX_DROP" ID="25" TYPE="u32"/>
+		<Attribute name="TX_DROP_BYTES" ID="26" TYPE="u32"/>
+		<Attribute name="TX_RETRY" ID="27" TYPE="u32"/>
+		<Attribute name="TX_NO_ACK" ID="28" TYPE="u32"/>
+		<Attribute name="TX_NO_BACK" ID="29" TYPE="u32"/>
+		<Attribute name="TX_AGGR" ID="33" TYPE="u32"/>
+		<Attribute name="TX_SUCC_MCS" ID="34" TYPE="u32"/>
+		<Attribute name="TX_FAIL_MCS" ID="35" TYPE="u32"/>
+		<Attribute name="TX_DELAY" ID="37" TYPE="u32"/>
+		<Attribute name="RX_MPDU" ID="38" TYPE="u32"/>
+		<Attribute name="RX_MPDU_BYTES" ID="39" TYPE="u32"/>
+		<Attribute name="RX_PPDU" ID="40" TYPE="u32"/>
+		<Attribute name="RX_PPDU_BYTES" ID="41" TYPE="u32"/>
+		<Attribute name="RX_MPDU_LOST" ID="42" TYPE="u32"/>
+		<Attribute name="RX_MPDU_RETRY" ID="43" TYPE="u32"/>
+		<Attribute name="RX_MPDU_DUP" ID="44" TYPE="u32"/>
+		<Attribute name="RX_MPDU_DISCARD" ID="45" TYPE="u32"/>
+		<Attribute name="RX_MCS" ID="48" TYPE="u32"/>
+		<Attribute name="RX_AGGR" ID="49" TYPE="u32"/>
+		<Attribute name="PEER_PS_TIMES" ID="50" TYPE="u32"/>
+		<Attribute name="PEER_PS_DURATION" ID="51" TYPE="u32"/>
+		<Attribute name="RX_PROBE_REQ" ID="52" TYPE="u32"/>
+		<Attribute name="RX_MGMT" ID="53" TYPE="u32"/>
+		<Attribute name="IDLE_TIME" ID="54" TYPE="u32"/>
+		<Attribute name="TX_TIME" ID="55" TYPE="u32"/>
+		<Attribute name="RX_BUSY" ID="57" TYPE="u32"/>
+		<Attribute name="RX_BAD" ID="58" TYPE="u32"/>
+		<Attribute name="TX_BAD" ID="59" TYPE="u32"/>
+		<Attribute name="NO_AVAIL" ID="60" TYPE="u32"/>
+		<Attribute name="IN_BSS_TIME" ID="61" TYPE="u32"/>
+		<Attribute name="OUT_BSS_TIME" ID="62" TYPE="u32"/>
+		<Attribute name="ANT_SNR" ID="65" TYPE="u32"/>
+		<Attribute name="ANT_NF" ID="66" TYPE="u32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_LOC_GET_CAPA = 128 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_FTM_START_SESSION = 129 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_FTM_ABORT_SESSION = 130 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_FTM_MEAS_RESULT = 131 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_FTM_SESSION_DONE = 132 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_FTM_CFG_RESPONDER = 133 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_AOA_MEAS = 134 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_AOA_ABORT_MEAS = 135 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_AOA_MEAS_RESULT = 136 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_ENCRYPTION_TEST = 137 -->
+	<VendorCmd name="ENCRYPT" ID="137">
+		<Attribute name="FLAG" ID="1" TYPE="FLAG"/>
+		<Attribute name="CIPHER" ID="2" TYPE="u32"/>
+		<Attribute name="KEYID" ID="3" TYPE="u8"/>
+		<Attribute name="TK" ID="4" TYPE="BLOB"/>
+		<Attribute name="PN" ID="5" TYPE="BLOB"/>
+		<Attribute name="DATA" ID="6" TYPE="BLOB"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_CHAIN_RSSI = 138 -->
+	<VendorCmd name="GET_CHAIN_RSSI" ID="138">
+		<Attribute name="MAC_ADDR" ID="6" TYPE="mac_addr"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DMG_RF_GET_SECTOR_CFG = 139 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DMG_RF_SET_SECTOR_CFG = 140 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DMG_RF_GET_SELECTED_SECTOR = 141 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DMG_RF_SET_SELECTED_SECTOR = 142 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_CONFIGURE_TDLS = 143 -->
+	<VendorCmd name="CONFIG_TDLS_MODE" ID="143">
+		<Attribute name="MODE" ID="1" TYPE="u32"/>
+		<Attribute name="TX_STATS" ID="2" TYPE="u32"/>
+		<Attribute name="TX_THRESHOLD" ID="3" TYPE="u32"/>
+		<Attribute name="DISC_PERIOD" ID="4" TYPE="u32"/>
+		<Attribute name="MAX_DISC_ATTEMPT" ID="5" TYPE="u32"/>
+		<Attribute name="IDLE_TIMEOUT" ID="6" TYPE="u32"/>
+		<Attribute name="IDLE_PACKET_THRE" ID="7" TYPE="u32"/>
+		<Attribute name="SETUP_RSSI_THRE" ID="8" TYPE="s32"/>
+		<Attribute name="TEARDOWN_RSSI_THRE" ID="9" TYPE="s32"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_HE_CAPABILITIES = 144 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_ABORT_SCAN = 145 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SET_SAR_LIMITS = 146 -->
+	<VendorCmd name="SAR_SET" ID="146">
+		<Attribute name="ENABLE" ID="1" TYPE="u32"/>
+		<Attribute name="NUM_SPECS" ID="2" TYPE="u32"/>
+		<Attribute name="SAR_SPEC" ID="3" TYPE="NESTED" ATTR_MAX="8">
+			<Attribute name="BAND" ID="4" TYPE="u32"/>
+			<Attribute name="CHAIN" ID="5" TYPE="u32"/>
+			<Attribute name="MOD" ID="6" TYPE="u32"/>
+			<Attribute name="POW" ID="7" TYPE="u32"/>
+			<Attribute name="POW_IDX" ID="8" TYPE="u32"/>
+		</Attribute>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_EXTERNAL_ACS = 147 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_CHIP_PWRSAVE_FAILURE = 148 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_NUD_STATS_SET = 149 -->
+	<VendorCmd name="NUD_STATS_SET" ID="149">
+		<Attribute name="STATS_SET_START" ID="1" TYPE="FLAG"/>
+		<Attribute name="STATS_GW_IPV4" ID="2" TYPE="u32"/>
+		<Attribute name="STATS_SET_DATA_PKT_INFO" ID="3" TYPE="NESTED">
+			 <Attribute name="STATS_PKT_INFO_TYPE" ID="1" TYPE="u32" />
+			 <Attribute name="STATS_DNS_DOMAIN_NAME" ID="2" TYPE="string" />
+			 <Attribute name="STATS_SRC_PORT" ID="3" TYPE="u32" />
+			 <Attribute name="STATS_DEST_PORT" ID="4" TYPE="u32" />
+			 <Attribute name="STATS_DEST_IPV4" ID="5" TYPE="u32" />
+			 <Attribute name="STATS_DEST_IPV6" ID="6" TYPE="blob" />
+		</Attribute>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_NUD_STATS_GET = 150 -->
+	<VendorCmd name="NUD_STATS_GET" ID="150">
+		<VendorRsp name="NUD_STATS_GET" ID="150" ATTR_MAX="12">
+			<Attribute name="NUD_STATS_ARP_REQ_COUNT_FROM_NETDEV" ID="1" TYPE="U16"/>
+			<Attribute name="NUD_STATS_ARP_REQ_COUNT_TO_LOWER_MAC" ID="2" TYPE="U16"/>
+			<Attribute name="NUD_STATS_ARP_REQ_RX_COUNT_BY_LOWER_MAC" ID="3" TYPE="U16"/>
+			<Attribute name="NUD_STATS_ARP_REQ_COUNT_TX_SUCCESS" ID="4" TYPE="U16"/>
+			<Attribute name="NUD_STATS_ARP_RSP_RX_COUNT_BY_LOWER_MAC" ID="5" TYPE="U16"/>
+			<Attribute name="NUD_STATS_ARP_RSP_RX_COUNT_BY_UPPER_MAC" ID="6" TYPE="U16"/>
+			<Attribute name="NUD_STATS_ARP_RSP_COUNT_TO_NETDEV" ID="7" TYPE="U16"/>
+			<Attribute name="NUD_STATS_ARP_RSP_COUNT_OUT_OF_ORDER_DROP" ID="8" TYPE="U16"/>
+			<Attribute name="NUD_STATS_AP_LINK_ACTIVE" ID="9" TYPE="FLAG"/>
+			<Attribute name="NUD_STATS_IS_DAD" ID="10" TYPE="FLAG"/>
+			<Attribute name="NUD_STATS_DATA_PKT_STATS" ID="11" TYPE="NESTED" ATTR_MAX="12">
+			<Attribute name="TEMP" ID="1" TYPE="u16"/>
+			</Attribute>
+		</VendorRsp>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_FETCH_BSS_TRANSITION_STATUS = 151 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SET_TRACE_LEVEL = 152 -->
+	<VendorCmd name="SET_TRACE_LEVEL" ID="152">
+		<Attribute name="TRACE_LEVEL_PARAM" ID="1" TYPE="NESTED" ATTR_MAX="4">
+			<Attribute name="MODULE_ID" ID="2" TYPE="U32"/>
+			<Attribute name="TRACE_MASK" ID="3" TYPE="U32"/>
+		</Attribute>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_BRP_SET_ANT_LIMIT = 153 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SPECTRAL_SCAN_START = 154 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SPECTRAL_SCAN_STOP = 155 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_ACTIVE_TOS = 156 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_HANG = 157 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SPECTRAL_SCAN_GET_CONFIG = 158 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SPECTRAL_SCAN_GET_DIAG_STATS = 159 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SPECTRAL_SCAN_GET_CAP_INFO = 160 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SPECTRAL_SCAN_GET_STATUS = 161 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_HTT_STATS = 162 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_RROP_INFO = 163 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_SAR_LIMITS = 164 -->
+	<VendorCmd name="SAR_GET" ID="164">
+		<VendorRsp name="SAR_GET" ID="164" ATTR_MAX="8">
+			<Attribute name="ENABLE" ID="1" TYPE="u32"/>
+			<Attribute name="NUM_SPECS" ID="2" TYPE="u32"/>
+			<Attribute name="SAR_SPEC" ID="3" TYPE="NESTED" ATTR_MAX="8">
+				<Attribute name="BAND" ID="4" TYPE="u32"/>
+				<Attribute name="CHAIN" ID="5" TYPE="u32"/>
+				<Attribute name="MOD" ID="6" TYPE="u32"/>
+				<Attribute name="POW" ID="7" TYPE="u32"/>
+			</Attribute>
+		</VendorRsp>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_WLAN_MAC_INFO = 165 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_SET_QDEPTH_THRESH = 166 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_THERMAL_CMD = 167 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_THERMAL_EVENT = 168 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_WIFI_TEST_CONFIGURATION = 169 -->
+	<VendorCmd name="WIFI_CONFIG" ID="169">
+		<Attribute name="WMM_ENABLE" ID="1" TYPE="u8"/>
+		<Attribute name="ACCEPT_ADDBA_REQ" ID="2" TYPE="u8"/>
+		<Attribute name="SEND_ADDBA_REQ" ID="3" TYPE="u8"/>
+		<Attribute name="HE_FRAGMENTATION" ID="4" TYPE="u8"/>
+		<Attribute name="HE_MCS" ID="5" TYPE="u8"/>
+		<Attribute name="WEP_TKIP_IN_HE" ID="6" TYPE="u8"/>
+		<Attribute name="ADD_DEL_BA_SESSION" ID="7" TYPE="u8"/>
+		<Attribute name="ADDBA_BUFF_SIZE" ID="8" TYPE="u16"/>
+		<Attribute name="BA_TID" ID="9" TYPE="u8"/>
+		<Attribute name="ENABLE_NO_ACK" ID="10" TYPE="u8"/>
+		<Attribute name="NO_ACK_AC" ID="11" TYPE="u8"/>
+		<Attribute name="HE_LTF" ID="12" TYPE="u8"/>
+		<Attribute name="ENABLE_TX_BEAMFORMEE" ID="13" TYPE="u8"/>
+		<Attribute name="HE_TX_BEAMFORMEE_NSTS" ID="14" TYPE="u8"/>
+		<Attribute name="HE_MU_EDCA_AC" ID="15" TYPE="u8"/>
+		<Attribute name="HE_MU_EDCA_AIFSN" ID="16" TYPE="u8"/>
+		<Attribute name="HE_MU_EDCA_ECWMIN" ID="17" TYPE="u8"/>
+		<Attribute name="HE_MU_EDCA_ECWMAX" ID="18" TYPE="u8"/>
+		<Attribute name="HE_MU_EDCA_TIMER" ID="19" TYPE="u8"/>
+		<Attribute name="HE_MAC_PADDING_DUR" ID="20" TYPE="u8"/>
+		<Attribute name="OVERRIDE_MU_EDCA" ID="21" TYPE="u8"/>
+		<Attribute name="HE_OM_CTRL_SUPP" ID="22" TYPE="u8"/>
+		<Attribute name="TWT_SETUP" ID="23" TYPE="NESTED">
+			<Attribute name="BCAST" ID="1" TYPE="blob" LENGTH="1"/>
+			<Attribute name="REQ_TYPE" ID="2" TYPE="u8"/>
+			<Attribute name="TRIGGER" ID="3" TYPE="blob" LENGTH="1"/>
+			<Attribute name="FLOW_TYPE" ID="4" TYPE="u8"/>
+			<Attribute name="WAKE_INTVL_EXP" ID="6" TYPE="u8"/>
+			<Attribute name="PROTECTION" ID="7" TYPE="blob" LENGTH="1"/>
+			<Attribute name="WAKE_TIME" ID="8" TYPE="u32"/>
+			<Attribute name="WAKE_DURATION" ID="9" TYPE="u32"/>
+			<Attribute name="WAKE_INTVL_MANTISSA" ID="10" TYPE="u32"/>
+		</Attribute>
+		<Attribute name="TWT_TERMINATE" ID="24" TYPE="NESTED">
+		</Attribute>
+		<Attribute name="TWT_SUSPEND" ID="25" TYPE="u8"/>
+		<Attribute name="TWT_RESUME" ID="26" TYPE="u8"/>
+		<Attribute name="HE_OM_CTRL_BW" ID="27" TYPE="u8"/>
+		<Attribute name="HE_OM_CTRL_NSS" ID="28" TYPE="u8"/>
+		<Attribute name="HE_OM_CTRL_UL_MU_DISABLE" ID="29" TYPE="u8"/>
+		<Attribute name="CLEAR_HE_OM_CTRL_CONFIG" ID="30" TYPE="blob" LENGTH="1"/>
+		<Attribute name="HE_TX_SUPPDU" ID="31" TYPE="u8"/>
+		<Attribute name="HE_ACTION_TX_TB_PPDU" ID="32" TYPE="u8"/>
+		<Attribute name="HE_OMI_TX" ID="33" TYPE="NESTED">
+			<Attribute name="HE_OMI_RX_NSS" ID="1" TYPE="u8"/>
+			<Attribute name="HE_OMI_CH_BW" ID="2" TYPE="u8"/>
+			<Attribute name="HE_OMI_ULMU_DISABLE" ID="3" TYPE="u8"/>
+			<Attribute name="HE_OMI_TX_NSTS" ID="4" TYPE="u8"/>
+			<Attribute name="HE_OMI_ULMU_DATA_DISABLE" ID="5" TYPE="u8"/>
+		</Attribute>
+		<Attribute name="HE_HTC_HE_SUPP" ID="34" TYPE="u8"/>
+		<Attribute name="ENABLE_2G_VHT" ID="35" TYPE="u8"/>
+		<Attribute name="SET_HE_TESTBED_DEFAULTS" ID="36" TYPE="u8"/>
+		<Attribute name="HE_TWT_REQ_SUPPORT" ID="37" TYPE="u8"/>
+		<Attribute name="PMF_PROTECTION" ID="38" TYPE="u8"/>
+		<Attribute name="DISASSOC_TX" ID="39" TYPE="blob" LENGTH="1"/>
+		<Attribute name="FT_REASSOCREQ_RSNXE_USED" ID="40" TYPE="u8"/>
+		<Attribute name="CONFIG_IGNORE_CSA" ID="41" TYPE="u8"/>
+		<Attribute name="OCI_OVERRIDE" ID="42" TYPE="NESTED">
+			<Attribute name="OCI_OVERRIDE_FRAME_TYPE" ID="1" TYPE="u8"/>
+			<Attribute name="OCI_OVERRIDE_FREQUENCY" ID="2" TYPE="u32"/>
+		</Attribute>
+		<Attribute name="IGNORE_SA_QUERY_TIMEOUT" ID="43" TYPE="u8"/>
+		<Attribute name="FILS_DISCOVERY_FRAMES_TX" ID="44" TYPE="u8"/>
+		<Attribute name="FULL_BW_UL_MU_MIMO" ID="45" TYPE="u8"/>
+		<Attribute name="BSS_MAX_IDLE_PERIOD" ID="46" TYPE="u16"/>
+		<Attribute name="RU_242_TONE_TX" ID="47" TYPE="u8"/>
+		<Attribute name="DISABLE_DATA_MGMT_RSP_TX" ID="48" TYPE="u8"/>
+		<Attribute name="PUNCTURED_PREAMBLE_RX" ID="49" TYPE="u8"/>
+		<Attribute name="IGNORE_H2E_RSNXE" ID="50" TYPE="u8"/>
+		<Attribute name="6GHZ_SECURITY_TEST_MODE" ID="51" TYPE="u8"/>
+		<Attribute name="ER_SU_PPDU_TYPE" ID="52" TYPE="u8"/>
+		<Attribute name="KEEP_ALIVE_FRAME_TYPE" ID="53" TYPE="u8"/>
+		<Attribute name="USE_BSSID_IN_PROBE_REQ_RA" ID="54" TYPE="u8"/>
+		<Attribute name="BSS_MAX_IDLE_PERIOD_ENABLE" ID="55" TYPE="u8"/>
+		<Attribute name="RX_CTRL_FRAME_TO_MBSS" ID="56" TYPE="u8"/>
+		<Attribute name="BCAST_TWT_SUPPORT" ID="57" TYPE="u8"/>
+		<Attribute name="11BE_EMLSR_MODE" ID="58" TYPE="u8"/>
+		<Attribute name="BEAMFORMER_PERIODIC_SOUNDING" ID="59" TYPE="u8"/>
+		<Attribute name="EHT_BEAMFORMEE_SS_80MHZ" ID="60" TYPE="u8"/>
+		<Attribute name="EHT_BEAMFORMEE_SS_160MHZ" ID="61" TYPE="u8"/>
+		<Attribute name="EHT_BEAMFORMEE_SS_320MHZ" ID="62" TYPE="u8"/>
+		<Attribute name="EXCLUDE_STA_PROF_IN_PROBE_REQ" ID="63" TYPE="u8"/>
+		<Attribute name="SET_EHT_TESTBED_DEFAULTS" ID="64" TYPE="u8"/>
+		<Attribute name="EHT_MCS" ID="65" TYPE="u8"/>
+		<Attribute name="EHT_TB_SOUNDING_FB_RL" ID="66" TYPE="u8"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_NAN_EXT = 171 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_PEER_CFR_CAPTURE_CFG = 173 -->
+	<VendorCmd name="CFR_CAPTURE_CFG" ID="173">
+		<Attribute name="CFR_VERSION," ID="7" TYPE="U8"/>
+		<Attribute name="CFR_ENABLE" ID="2" TYPE="FLAG"/>
+		<Attribute name="CFR_ENABLE_GROUP_BITMAP" ID="8" TYPE="U32"/>
+		<Attribute name="CFR_CAPTURE_TYPE" ID="11" TYPE="U32"/>
+		<Attribute name="CFR_GROUP_TABLE" ID="14" TYPE="NESTED" ATTR_MAX="25">
+			<Attribute name="CFR_GROUP_ENTRY" ID="15" TYPE="NESTED" ATTR_MAX="25">
+				<Attribute name="CFR_GROUP_NUMBER" ID="16" TYPE="u32"/>
+				<Attribute name="CFR_GROUP_MGMT_FILTER" ID="23" TYPE="u32"/>
+				<Attribute name="CFR_GROUP_TA" ID="17" TYPE="mac_addr"/>
+				<Attribute name="CFR_GROUP_TA_MASK" ID="19" TYPE="mac_addr"/>
+			</Attribute>
+		</Attribute>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_THROUGHPUT_CHANGE_EVENT = 174 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_COEX_CONFIG = 175 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_FW_STATE = 177 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_PEER_STATS_CACHE_FLUSH = 178 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_MPTA_HELPER_CONFIG = 179 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_BEACON_REPORTING = 180 -->
+	<VendorCmd name="BEACON_REPORTING" ID="180">
+		<Attribute name="BEACON_REPORTING_OP_TYPE" ID="1" TYPE="u8"/>
+		<Attribute name="BEACON_REPORTING_ACTIVE_REPORTING" ID="2" TYPE="FLAG"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_INTEROP_ISSUES_AP = 181 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_OEM_DATA = 182 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_AVOID_FREQUENCY_EXT = 183 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_ADD_STA_NODE = 184 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_BTC_CHAIN_MODE = 185 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_STA_INFO = 186 -->
+	<VendorCmd name="GET_STA_INFO" ID="186">
+		<Attribute name="GET_STA_INFO_MAC" ID="1" TYPE="mac_addr"/>
+		<VendorRsp name="GET_STA_INFO" ID="186" ATTR_MAX="44">
+			<Attribute name="GET_STA_INFO_MAC" ID="1" TYPE="mac_addr"/>
+			<Attribute name="GET_STA_INFO_FLAGS" ID="2" TYPE="u32"/>
+			<Attribute name="GET_STA_INFO_GUARD_INTERVAL" ID="3" TYPE="u32"/>
+			<Attribute name="GET_STA_INFO_RX_RETRY_COUNT" ID="4" TYPE="u32"/>
+			<Attribute name="GET_STA_INFO_RX_BC_MC_COUNT" ID="5" TYPE="u32"/>
+			<Attribute name="GET_STA_INFO_TX_RETRY_SUCCEED" ID="6" TYPE="u32"/>
+			<Attribute name="GET_STA_INFO_TX_RETRY_EXHAUSTED" ID="7" TYPE="u32"/>
+			<Attribute name="GET_STA_INFO_TARGET_TX_TOTAL" ID="8" TYPE="u32"/>
+			<Attribute name="GET_STA_INFO_TARGET_TX_RETRY" ID="9" TYPE="u32"/>
+			<Attribute name="GET_STA_INFO_TARGET_TX_RETRY_EXHAUSTED" ID="10" TYPE="u32"/>
+			<Attribute name="GET_STA_INFO_RX_FRAMES_CRC_FAIL_COUNT" ID="20" TYPE="u32"/>
+		</VendorRsp>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_SAR_LIMITS_EVENT = 187 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_UPDATE_STA_INFO = 188 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_DRIVER_DISCONNECT_REASON = 189 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_CONFIG_TSPEC = 190 -->
+	<VendorCmd name="CONFIG_TSPEC" ID="190">
+		<Attribute name="CONFIG_TSPEC_OPERATION" ID="1" TYPE="u8"/>
+		<Attribute name="CONFIG_TSPEC_TSID" ID="2" TYPE="u8"/>
+		<Attribute name="CONFIG_TSPEC_DIRECTION" ID="3" TYPE="u8"/>
+		<Attribute name="CONFIG_TSPEC_APSD" ID="4" TYPE="FLAG"/>
+		<Attribute name="CONFIG_TSPEC_USER_PRIORITY" ID="5" TYPE="u8"/>
+		<Attribute name="CONFIG_TSPEC_ACK_POLICY" ID="6" TYPE="u8"/>
+		<Attribute name="CONFIG_TSPEC_NOMINAL_MSDU_SIZE" ID="7" TYPE="u16"/>
+		<Attribute name="CONFIG_TSPEC_MAXIMUM_MSDU_SIZE" ID="8" TYPE="u16"/>
+		<Attribute name="CONFIG_TSPEC_MIN_SERVICE_INTERVAL" ID="9" TYPE="u32"/>
+		<Attribute name="CONFIG_TSPEC_MAX_SERVICE_INTERVAL" ID="10" TYPE="u32"/>
+		<Attribute name="CONFIG_TSPEC_INACTIVITY_INTERVAL" ID="11" TYPE="u32"/>
+		<Attribute name="CONFIG_TSPEC_SUSPENSION_INTERVAL" ID="12" TYPE="u32"/>
+		<Attribute name="CONFIG_TSPEC_MINIMUM_DATA_RATE" ID="13" TYPE="u32"/>
+		<Attribute name="CONFIG_TSPEC_MEAN_DATA_RATE" ID="14" TYPE="u32"/>
+		<Attribute name="CONFIG_TSPEC_PEAK_DATA_RATE" ID="15" TYPE="u32"/>
+		<Attribute name="CONFIG_TSPEC_BURST_SIZE" ID="16" TYPE="u32"/>
+		<Attribute name="CONFIG_TSPEC_MINIMUM_PHY_RATE" ID="17" TYPE="u32"/>
+		<Attribute name="CONFIG_TSPEC_SURPLUS_BANDWIDTH_ALLOWANCE" ID="18" TYPE="u16"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_CONFIG_TWT = 191 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GETBAND = 192 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_MEDIUM_ASSESS = 193 -->
+	<VendorCmd name="MEDIUM_ASSESS" ID="193">
+		<Attribute name="MEDIUM_ASSESS_TYPE" ID="1" TYPE="u8"/>
+		<Attribute name="MEDIUM_ASSESS_PERIOD" ID="2" TYPE="u32"/>
+		<Attribute name="MEDIUM_ASSESS_CONGESTION_REPORT_ENABLE" ID="9" TYPE="u8"/>
+		<Attribute name="MEDIUM_ASSESS_CONGESTION_REPORT_THRESHOLD" ID="10" TYPE="u8"/>
+		<Attribute name="MEDIUM_ASSESS_CONGESTION_REPORT_INTERVAL" ID="11" TYPE="u8"/>
+	</VendorCmd>
+	<!-- QCA_NL80211_VENDOR_SUBCMD_UPDATE_SSID = 194 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_WIFI_FW_STATS = 195 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_MBSSID_TX_VDEV_STATUS = 196 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_CONCURRENT_MULTI_STA_POLICY = 197 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_USABLE_CHANNELS = 198 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_GET_RADAR_HISTORY = 199 -->
+	<!-- QCA_NL80211_VENDOR_SUBCMD_MDNS_OFFLOAD = 200 -->
+	<VendorCmd name="MDNS_OFFLOAD" ID="200">
+		<Attribute name="MDNS_OFFLOAD_ENABLE" ID="1" TYPE="FLAG"/>
+		<Attribute name="MDNS_TABLE" ID="2" TYPE="NESTED" ATTR_MAX="1">
+			<Attribute name="MDNS_ENTRY" ID="3" TYPE="NESTED" ATTR_MAX="3">
+				<Attribute name="MDNS_OFFLOAD_FQDN" ID="4" TYPE="string"/>
+				<Attribute name="MDNS_OFFLOAD_ANSWER_RESOURCE_RECORDS_COUNT" ID="5" TYPE="u16"/>
+				<Attribute name="MDNS_OFFLOAD_ANSWER_PAYLOAD" ID="6" TYPE="blob"/>
+			</Attribute>
+		</Attribute>
+	</VendorCmd>
+</WCN_VenTool>
